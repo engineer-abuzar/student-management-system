@@ -1,0 +1,24 @@
+<!-- header -->
+<div class="header">
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </div>
+
+    <!-- Centered Title & Subtitle -->
+    <div class="title-container">
+        <div class="title">Shobhit University</div>
+        <div class="subtitle">Student Management System</div>
+    </div>
+
+    <% if (locals.isloggedIn) { %>
+        <!-- Icons Section -->
+        <div class="icons">
+            <i class="bell">🔔</i> <!-- Bell Icon -->
+            <div class="profile">
+                <img src="/images/profile.jpg" alt="Profile">
+            </div>
+        </div>
+     <% } %>
+     
+</div>

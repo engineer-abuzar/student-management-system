@@ -1,0 +1,278 @@
+<div class="hostel-container">
+    <h2>🏠 Hostel Details</h2>
+    
+    <div class="hostel">
+        <h3>Shobhit Boys Hostel</h3>
+        <p><strong>Capacity:</strong> 300 Students</p>
+        <p><strong>Warden:</strong> Dr. Rajesh Kumar</p>
+        <p><strong>Contact:</strong> +91 9876543210</p>
+        <p><strong>Facilities:</strong> Wi-Fi, Mess, 24x7 Security, Laundry, Study Room</p>
+        <p><strong>Fee per Semester:</strong> ₹45,000</p>
+    </div>
+
+    <div class="hostel">
+        <h3>Shobhit Girls Hostel</h3>
+        <p><strong>Capacity:</strong> 250 Students</p>
+        <p><strong>Warden:</strong> Mrs. Meera Sharma</p>
+        <p><strong>Contact:</strong> +91 9876543221</p>
+        <p><strong>Facilities:</strong> CCTV Security, Mess & Canteen, Gym, Common Room, Medical Assistance</p>
+        <p><strong>Fee per Semester:</strong> ₹50,000</p>
+    </div>
+
+    <div class="hostel">
+        <h3>International Hostel</h3>
+        <p><strong>Capacity:</strong> 150 Students</p>
+        <p><strong>Warden:</strong> Mr. Vikram Singh</p>
+        <p><strong>Contact:</strong> +91 9876543233</p>
+        <p><strong>Facilities:</strong> Air Conditioned Rooms, Library, Indoor Sports, Personal Wardrobes, Attached Washrooms</p>
+        <p><strong>Fee per Semester:</strong> ₹70,000</p>
+    </div>
+</div>
+.hostel-container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hostel-container h2 {
+    text-align: center;
+    color: #E74C3C;
+    margin-bottom: 20px;
+}
+
+.hostel {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hostel h3 {
+    color: #2C3E50;
+}
+
+.hostel p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+
+
+<select name="district" required>
+   
+    <option value="Nicobar" <%= locals.studentDetails.district === "Nicobar" ? "selected" : "" %>>Nicobar</option>
+    <option value="North and Middle Andaman" <%= locals.studentDetails.district === "North and Middle Andaman" ? "selected" : "" %>>North and Middle Andaman</option>
+    <option value="South Andaman" <%= locals.studentDetails.district === "South Andaman" ? "selected" : "" %>>South Andaman</option>
+    <option value="Anantapur" <%= locals.studentDetails.district === "Anantapur" ? "selected" : "" %>>Anantapur</option>
+    <option value="Chittoor" <%= locals.studentDetails.district === "Chittoor" ? "selected" : "" %>>Chittoor</option>
+    <option value="East Godavari" <%= locals.studentDetails.district === "East Godavari" ? "selected" : "" %>>East Godavari</option>
+    <option value="Guntur" <%= locals.studentDetails.district === "Guntur" ? "selected" : "" %>>Guntur</option>
+    <option value="Krishna" <%= locals.studentDetails.district === "Krishna" ? "selected" : "" %>>Krishna</option>
+    <option value="Kurnool" <%= locals.studentDetails.district === "Kurnool" ? "selected" : "" %>>Kurnool</option>
+    <option value="Prakasam" <%= locals.studentDetails.district === "Prakasam" ? "selected" : "" %>>Prakasam</option>
+    <option value="Sri Potti Sriramulu Nellore" <%= locals.studentDetails.district === "Sri Potti Sriramulu Nellore" ? "selected" : "" %>>Sri Potti Sriramulu Nellore</option>
+    <option value="Srikakulam" <%= locals.studentDetails.district === "Srikakulam" ? "selected" : "" %>>Srikakulam</option>
+    <option value="Visakhapatnam" <%= locals.studentDetails.district === "Visakhapatnam" ? "selected" : "" %>>Visakhapatnam</option>
+    <option value="Vizianagaram" <%= locals.studentDetails.district === "Vizianagaram" ? "selected" : "" %>>Vizianagaram</option>
+    <option value="West Godavari" <%= locals.studentDetails.district === "West Godavari" ? "selected" : "" %>>West Godavari</option>
+    <option value="YSR Kadapa" <%= locals.studentDetails.district === "YSR Kadapa" ? "selected" : "" %>>YSR Kadapa</option>
+    <option value="Anjaw" <%= locals.studentDetails.district === "Anjaw" ? "selected" : "" %>>Anjaw</option>
+    <option value="Changlang" <%= locals.studentDetails.district === "Changlang" ? "selected" : "" %>>Changlang</option>
+    <option value="Dibang Valley" <%= locals.studentDetails.district === "Dibang Valley" ? "selected" : "" %>>Dibang Valley</option>
+    <option value="East Kameng" <%= locals.studentDetails.district === "East Kameng" ? "selected" : "" %>>East Kameng</option>
+    <option value="East Siang" <%= locals.studentDetails.district === "East Siang" ? "selected" : "" %>>East Siang</option>
+    <option value="Kamle" <%= locals.studentDetails.district === "Kamle" ? "selected" : "" %>>Kamle</option>
+    <option value="Kra Daadi" <%= locals.studentDetails.district === "Kra Daadi" ? "selected" : "" %>>Kra Daadi</option>
+    <option value="Kurung Kumey" <%= locals.studentDetails.district === "Kurung Kumey" ? "selected" : "" %>>Kurung Kumey</option>
+    <option value="Lepa Rada" <%= locals.studentDetails.district === "Lepa Rada" ? "selected" : "" %>>Lepa Rada</option>
+    <option value="Lohit" <%= locals.studentDetails.district === "Lohit" ? "selected" : "" %>>Lohit</option>
+    <option value="Lower Dibang Valley" <%= locals.studentDetails.district === "Lower Dibang Valley" ? "selected" : "" %>>Lower Dibang Valley</option>
+    <option value="Lower Siang" <%= locals.studentDetails.district === "Lower Siang" ? "selected" : "" %>>Lower Siang</option>
+    <option value="Lower Subansiri" <%= locals.studentDetails.district === "Lower Subansiri" ? "selected" : "" %>>Lower Subansiri</option>
+    <option value="Namsai" <%= locals.studentDetails.district === "Namsai" ? "selected" : "" %>>Namsai</option>
+    <option value="Papum Pare" <%= locals.studentDetails.district === "Papum Pare" ? "selected" : "" %>>Papum Pare</option>
+    <option value="Tawang" <%= locals.studentDetails.district === "Tawang" ? "selected" : "" %>>Tawang</option>
+    <option value="Tirap" <%= locals.studentDetails.district === "Tirap" ? "selected" : "" %>>Tirap</option>
+    <option value="Upper Siang" <%= locals.studentDetails.district === "Upper Siang" ? "selected" : "" %>>Upper Siang</option>
+    <option value="Upper Subansiri" <%= locals.studentDetails.district === "Upper Subansiri" ? "selected" : "" %>>Upper Subansiri</option>
+    <option value="West Kameng" <%= locals.studentDetails.district === "West Kameng" ? "selected" : "" %>>West Kameng</option>
+    <option value="West Siang" <%= locals.studentDetails.district === "West Siang" ? "selected" : "" %>>West Siang</option>
+    <option value="Baksa" <%= locals.studentDetails.district === "Baksa" ? "selected" : "" %>>Baksa</option>
+    <option value="Barpeta" <%= locals.studentDetails.district === "Barpeta" ? "selected" : "" %>>Barpeta</option>
+    <option value="Biswanath" <%= locals.studentDetails.district === "Biswanath" ? "selected" : "" %>>Biswanath</option>
+    <option value="Bongaigaon" <%= locals.studentDetails.district === "Bongaigaon" ? "selected" : "" %>>Bongaigaon</option>
+    <option value="Cachar" <%= locals.studentDetails.district === "Cachar" ? "selected" : "" %>>Cachar</option>
+    <option value="Darrang" <%= locals.studentDetails.district === "Darrang" ? "selected" : "" %>>Darrang</option>
+    <option value="Goalpara" <%= locals.studentDetails.district === "Goalpara" ? "selected" : "" %>>Goalpara</option>
+    <option value="Jorhat" <%= locals.studentDetails.district === "Jorhat" ? "selected" : "" %>>Jorhat</option>
+    <option value="Kamrup" <%= locals.studentDetails.district === "Kamrup" ? "selected" : "" %>>Kamrup</option>
+    <option value="Sonitpur" <%= locals.studentDetails.district === "Sonitpur" ? "selected" : "" %>>Sonitpur</option>
+    <option value="Tinsukia" <%= locals.studentDetails.district === "Tinsukia" ? "selected" : "" %>>Tinsukia</option>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ddd;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details td {
+            padding: 8px 0;
+        }
+
+        .details td:first-child {
+            font-weight: bold;
+            width: 40%;
+        }
+
+        input {
+            /* width: 100%; */
+            padding: 5px;
+            margin: 3px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        /* }
+    </style>
+</head> */
+/* <body> */
+
+
+
+</body>
+</html>
+
+<form ></form>
+
+
+
+
+Your script dynamically loads and displays course resources when a subject is clicked. However, I see a few potential improvements and issues:
+
+Possible Issues & Improvements:
+
+1. Fetching Course Code Issue:
+
+You're trying to get courseCode from document.getElementById('course-code').innerText. Ensure this element exists and contains the correct value before making the request.
+
+
+
+2. Handling Multiple Resources:
+
+Right now, your resource object assumes a single file (resource.fileName). If the API returns multiple resources, you should iterate over them.
+
+
+
+3. Scoped Inline Styles:
+
+The inline <style> tag inside innerHTML will not apply correctly in all cases. Move the styles to an external CSS file or ensure they're inserted properly.
+
+
+
+4. Clicking Another Subject Overwrites Content:
+
+Consider clearing previous resources before inserting new ones or appending them dynamically instead.
+
+
+
+
+
+---
+
+Suggested Fixes & Enhancements:
+
+Handle Multiple Resources
+
+Modify how resources are displayed:
+
+
+/*  */
+Fix courseCode Retrieval
+
+Make sure courseCode is correctly retrieved:
+
+const courseCodeElement = document.getElementById('course-code');
+if (!courseCodeElement) {
+    console.error("Element with ID 'course-code' not found!");
+    return;
+}
+const courseCode = courseCodeElement.innerText.trim();
+
+Would you like help refining the viewPdf and downloadPdf functions too?

@@ -1,0 +1,1343 @@
+<div class="manage-student-container">
+    <div class="tab-content" id="add-student">📌 Add Student Form</div>
+    <div class="tab-content" id="edit-student">🖊️ Edit Student Details</div>
+    <div class="tab-content" id="remove-student">❌ Remove Student Records</div>
+    <div class="tab-content" id="register-student">📝 Pending Registration Form</div>
+    <div class="tab-content" id="display-student">👨‍🎓 List of All Students</div>
+
+    <!-- Horizontal Tab Navigation -->
+    <div class="student-actions">
+        <div class="student-action add" id="student-add" onclick="showTab('add-student')">➕ Add Student</div>
+        <div class="student-action edit" id="student-edit" onclick="showTab('edit-student')">✏️ Edit Student</div>
+        <div class="student-action remove" id="delete-student" onclick="showTab('remove-student')">❌ Remove Student</div>
+        <div class="student-action new" id="pending-registration" onclick="showTab('register-student')">📝 Pending Registration</div>
+        <div class="student-action display" id="display-students" onclick="showTab('display-student')">👨‍🎓 Display Students</div>
+    </div>
+
+   <div id="data-container" style="width: 100%;">
+
+   </div>
+
+</div>
+
+<style>
+/* Main container */
+.manage-student-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+
+
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.student-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+   
+}
+
+/* Tab Buttons */
+.student-action {
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    color: white;
+    min-width: 130px;
+}
+
+/* Button Colors */
+.add { background: #28a745; }
+.edit { background: #ffc107; color: black; }
+.remove { background: #dc3545; }
+.new { background: #007bff; }
+.display { background: #17a2b8; }
+
+/* Hover Effect */
+.student-action:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Tab Content Styling */
+.tab-content {
+    display: none; /* Hide all initially */
+    width: 100%;
+
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+  
+    text-align: center;
+
+}
+
+/* Show Active Tab */
+.tab-content.active {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .student-actions {
+        flex-direction: column;
+    }
+}
+</style>
+<!-- tab navigation -->
+<script>
+function showTab(tabId) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+
+    document.getElementById(tabId).classList.add('active');
+}
+
+
+document.addEventListener("DOMContentLoaded", () => showTab('add-student'));
+</script>
+
+
+<!-- student display script -->
+<script>
+const displayStudents=document.getElementById('display-students')
+displayStudents.addEventListener('click',()=>{
+
+    const tabContent=document.getElementById('data-container')
+  tabContent.innerHTML=`<div class="student-details-container">
+
+    <table class="student-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% results.forEach(student => { %>
+                <tr>
+                    <td><img <%if(student.profileImage){%>
+                        src="data:image/jpeg;base64,<%= student.profileImage.toString('base64') %>"
+                        <%}%> alt="Student"></td>
+                    <td><%= student.id %></td>
+                    <td><%= student.rollNumber %></td>
+                    <td><%= student.firstName %></td>
+                    <td><%= student.programme %></td>
+                    <td><%= student.email %></td>
+                    <td><%= student.mobileNumber %></td>
+                    <td><button class="view-btn" onclick="viewStudent('<%= student.id %>')">View</button></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    
+</div>
+
+<style>
+    .student-details-container {
+        width: 95%;
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .student-details-container h2 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+
+    .student-table th, .student-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .student-table thead {
+        background: #007bff;
+        color: white;
+    }
+
+    .student-table tbody tr:nth-child(even) {
+        background: #f8f9fa;
+    }
+
+    .student-table tbody tr:hover {
+        background: #dfe6e9;
+        cursor: pointer;
+    }
+
+    .student-table img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .view-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .view-btn:hover {
+        background: #218838;
+    }
+</style>
+`
+
+})
+function viewStudent(studentId) {
+    fetch(`/api/admin/getStudent/${studentId}`)
+        .then(response => response.json())
+        .then(student => {
+            if (student) {
+                const addmissionStatus=student.addmissionStatus
+        let data;
+        if(addmissionStatus){
+            data=` <fieldset>
+                            <legend>Status</legend>
+                  <h1>Addmission confirmed</h1>
+
+                        
+                            </fieldset>`
+        }else{
+            data=`<fieldset>
+                            <legend>Status</legend>
+                       <form action="/api/admin/updateAddmissionStatus" method="POST" style="all:unset;">
+                        <input type="hidden" name="studentId" value="${student.id}"/>
+                        <input type="submit" name="addmissionStatus" value="Approve" 
+       style="background-color: green; color: white; border: none; padding: 8px 12px; margin-right: 10px; cursor: pointer;width: 40%;
+    margin-bottom: 10px;"/>
+
+<input type="submit" name="addmissionStatus" value="Reject" 
+       style="background-color: red; color: white; border: none; padding: 8px 12px; cursor: pointer;width: 40%;
+    margin-bottom: 10px;"/>
+    </form>
+
+                        
+                            </fieldset>`
+          
+        }
+                
+                document.getElementById('data-container').innerHTML = `
+                <div class="profile-container" style="height:70vh;">
+                    <div id="changeable-container">
+
+                        <fieldset>
+                            <legend>Basic Information</legend>
+                            <div class="profile">
+                                <img src="data:image/jpeg;base64,${student.profileImage}" alt="Profile Picture">
+                            </div>
+                            <div class="details">
+                                <table>
+                                    <tr><td>Full Name</td><td>${student.firstName} ${student.middleName} ${student.lastName}</td></tr>
+                                    <tr><td>Email</td><td>${student.email}</td></tr>
+                                    <tr><td>Phone</td><td>${student.mobileNumber}</td></tr>
+                                    <tr><td>Date of Birth</td><td>${student.dob}</td></tr>
+                                    <tr><td>Gender</td><td>${student.gender}</td></tr>
+                                    <tr><td>Religion</td><td>${student.religion}</td></tr>
+                                    <tr><td>Category</td><td>${student.category}</td></tr>
+                                    <tr><td>Aadhar Number</td><td>${student.aadharNumber}</td></tr>
+                                    <tr><td>Address</td><td>${student.address}, ${student.district}, ${student.state}, ${student.country} - ${student.pincode}</td></tr>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Parent Details</legend>
+                            <div class="details">
+                                <table>
+                                    <tr><td>Father's Name</td><td>${student.fatherName}</td></tr>
+                                    <tr><td>Father's Occupation</td><td>${student.fatherOccupation}</td></tr>
+                                    <tr><td>Mother's Name</td><td>${student.motherName}</td></tr>
+                                    <tr><td>Guardian's Mobile</td><td>${student.gurdianMobileNumber}</td></tr>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Academic Details</legend>
+                            <div class="details">
+                                <table>
+                                    <tr><td>Programme</td><td>${student.programme}</td></tr>
+                                    <tr><td>Department</td><td>${student.department}</td></tr>
+                                    <tr><td>Batch Year</td><td>${student.batchYear}</td></tr>
+                                    <tr><td>Admission Type</td><td>${student.admissionType}</td></tr>
+                                    <tr><td>Current Year</td><td>${Math.ceil(student.semester / 2)}</td></tr>
+                                    <tr><td>Current Semester</td><td>${student.semester}</td></tr>
+                                    <tr><td>Session</td><td>${student.session}</td></tr>
+                                    <tr><td>Admission Date</td><td>${student.addmissionDate}</td></tr>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>School & Graduation</legend>
+                            <div class="details">
+                                <table>
+                                    <tr><td>10th Grade</td><td>${student.tenthGrade}</td></tr>
+                                    <tr><td>10th Passing Year</td><td>${student.tenthPassingYear}</td></tr>
+                                    <tr><td>10th Board</td><td>${student.tenthBoard}</td></tr>
+                                    <tr><td>12th Stream</td><td>${student.twelfthStream}</td></tr>
+                                    <tr><td>12th Grade</td><td>${student.twelfthGrade}</td></tr>
+                                    <tr><td>12th Passing Year</td><td>${student.twelfthPassingYear}</td></tr>
+                                    <tr><td>12th Board</td><td>${student.twelfthBoard}</td></tr>
+                                    <tr><td>Graduation Grade</td><td>${student.graduationGrade}</td></tr>
+                                    <tr><td>Graduation Passing Year</td><td>${student.graduationPassingYear}</td></tr>
+                                    <tr><td>Graduation University</td><td>${student.graduationUniversity}</td></tr>
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Additional Information</legend>
+                            <div class="details">
+                                <table>
+                                    <tr><td>Quota</td><td>${student.category}</td></tr>
+                                    <tr><td>Admission Number</td><td>${student.admissionNumber}</td></tr>
+                                    <tr><td>Enrollment Number</td><td>${student.enrollmentNumber}</td></tr>
+                                    <tr><td>Roll Number</td><td>${student.rollNumber}</td></tr>
+                                    <tr><td>Section</td><td>${student.section || 'N/A'}</td></tr>
+                                    <tr><td>Hostel Required</td><td>${student.hostelRequired}</td></tr>
+                                    <tr><td>Transport Required</td><td>${student.transportationRequired}</td></tr>
+                                </table>
+                            </div>
+                        </fieldset>
+                   ${data}
+                         
+                    </div>
+                </div>
+
+                <style>
+                    legend {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        color: #5e46b4;
+                        padding: 5px 10px;
+                        border-radius: 8px;
+                        background-color: #f0f0f0;
+                        border: 2px solid #5e46b4;
+                    }
+                    fieldset {
+                        border: 2px solid #5e46b4;
+                        border-radius: 10px;
+                        padding: 15px;
+                        margin-bottom: 20px;
+                        background-color: #f9f9f9;
+                        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+                    }
+                </style>
+                `;
+           
+            } else {
+                alert("Student not found!");
+            }
+        })
+        .catch(error => console.error("Error fetching student data:", error));
+}
+
+</script>
+
+
+
+<!-- delete student -->
+<script>
+    const deleteStudent=document.getElementById('delete-student')
+    deleteStudent.addEventListener('click',()=>{
+    
+        const tabContent=document.getElementById('data-container')
+      tabContent.innerHTML=`<div class="student-details-container">
+    
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(student => { %>
+                    <tr>
+                        <td><img <%if(student.profileImage){%>
+                        src="data:image/jpeg;base64,<%= student.profileImage.toString('base64') %>"
+                        <%}%>
+                         alt="Student"></td>
+                        <td><%= student.id %></td>
+                        <td><%= student.rollNumber %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.programme %></td>
+                        <td><%= student.email %></td>
+                        <td><%= student.mobileNumber %></td>
+                        <td><form method="POST" action="/api/admin/deleteStudent" style="all: unset;">
+    <input type="hidden" name="studentId" value="<%= student.id %>">
+    <button type="submit" class="view-btn">Remove</button>
+</form>
+</td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    <style>
+        .student-details-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        .student-details-container h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+    
+        .student-table th, .student-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    
+        .student-table thead {
+            background: #007bff;
+            color: white;
+        }
+    
+        .student-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    
+        .student-table tbody tr:hover {
+            background: #dfe6e9;
+            cursor: pointer;
+        }
+    
+        .student-table img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    
+        .view-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    
+        .view-btn:hover {
+            background: #218838;
+        }
+    </style>
+    `
+    
+    })
+ 
+    </script>
+
+
+
+
+
+
+<!-- edit student -->
+<script>
+    const editStudent=document.getElementById('student-edit')
+    editStudent.addEventListener('click',()=>{
+    
+        const tabContent=document.getElementById('data-container')
+      tabContent.innerHTML=`<div class="student-details-container">
+    
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(student => { %>
+                    <tr>
+                        <td><img <%if(student.profileImage){%>
+                        src="data:image/jpeg;base64,<%= student.profileImage.toString('base64') %>"
+                        <%}%>alt="Student"></td>
+                        <td><%= student.id %></td>
+                        <td><%= student.rollNumber %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.programme %></td>
+                        <td><%= student.email %></td>
+                        <td><%= student.mobileNumber %></td>
+                        <td><button class="view-btn" onclick="editStudentdb('<%=student.id %>')">edit</button></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    <style>
+        .student-details-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        .student-details-container h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+    
+        .student-table th, .student-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    
+        .student-table thead {
+            background: #007bff;
+            color: white;
+        }
+    
+        .student-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    
+        .student-table tbody tr:hover {
+            background: #dfe6e9;
+            cursor: pointer;
+        }
+    
+        .student-table img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    
+        .view-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    
+        .view-btn:hover {
+            background: #218838;
+        }
+    </style>
+    `
+    
+    })
+    function editStudentdb(studentId){
+         
+            const dataContainer=document.getElementById('data-container')
+            dataContainer.innerHTML=`<form  method="POST" action="/api/admin/updateStudent" style="    width: 80%;
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;">
+  <label for="studentName">Select Student:</label>
+  <select id="studentName" name="fieldName">
+    <option>religion</option>
+<option>state</option>
+<option  >district</option>
+<option  >country</option>
+<option  >hostelRequired</option>
+<option  >transportationRequired</option>
+<option  >gender</option>
+<option  >firstName</option>
+<option  >middleName</option>
+<option  >lastName</option>
+<option  >email</option>
+<option  >mobileNumber</option>
+<option  >dob</option>
+<option  >aadharNumber</option>
+<option  >adddress</option>
+<option  >pincode</option>
+<option  >fatherName</option>
+<option  >fatherName</option>
+<option  >gurdianMobileNumber</option>
+<option  >motherName</option>
+<option  >twelfthStream</option>
+<option  >tenthGrade</option>
+<option  >tenthPassingYear</option>
+<option>tenthBoard</option>
+<option  >twelfthGrade</option>
+<option  >twelfthPassingYear</option>
+<option>tenthBoard</option>
+<option>graduationGrade</option>
+<option  >graduationPassingYear</option>
+<option  >graduationUniversity</option>
+<option  >admissionNumber</option>
+<option>enrollmentNumber</option>
+<option  >rollNumber</option>
+<option  >department</option>
+<option  >programme</option>
+<option  >batchYear</option>
+<option  >admissionType</option>
+<option  >password</option>
+
+   
+  </select>
+
+  <h3>Enter value</h3>
+    <input type="text" name="editValue" placeholder="Enter Value" style="margin-bottom:10px;"/>
+  <input type="hidden" value="${studentId}" name="studentId"/>
+  <button type="submit" class="view-btn">Update Student</button>
+</form>
+`
+        }
+    </script>
+
+
+
+<!-- pending registrarion -->
+<script>
+    const pendingRegistration=document.getElementById('pending-registration')
+    pendingRegistration.addEventListener('click',()=>{
+    
+        const tabContent=document.getElementById('data-container')
+      tabContent.innerHTML=`<div class="student-details-container">
+    
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(student => { %>
+                    <%if(!student.addmissionStatus){%>
+                    <tr>
+                        <td><img <%if(student.profileImage){%>
+                        src="data:image/jpeg;base64,<%= student.profileImage.toString('base64') %>"
+                        <%}%> alt="Student"></td>
+                        <td><%= student.id %></td>
+                        <td><%= student.rollNumber %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.programme %></td>
+                        <td><%= student.email %></td>
+                        <td><%= student.mobileNumber %></td>
+                        <td><button class="view-btn" onclick="viewStudent('<%= student.id %>')">View</button></td>
+                    </tr>
+                    <%}%>
+                <% }) %>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    <style>
+        .student-details-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        .student-details-container h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+    
+        .student-table th, .student-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    
+        .student-table thead {
+            background: #007bff;
+            color: white;
+        }
+    
+        .student-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    
+        .student-table tbody tr:hover {
+            background: #dfe6e9;
+            cursor: pointer;
+        }
+    
+        .student-table img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    
+        .view-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    
+        .view-btn:hover {
+            background: #218838;
+        }
+    </style>
+    `
+    
+    })
+        
+    </script>
+<!-- admiin student addmission form -->
+
+<script>
+
+    const addStudent=document.getElementById('student-add')
+    addStudent.addEventListener('click',()=>{
+
+        const tabContent=document.getElementById('data-container')
+       tabContent.innerHTML=`<div class="admin-addminsion-form">
+    
+<form method="post" action="/api/admin/studentAddmission" enctype="multipart/form-data">
+    
+    <h3>Personal Details</h3>
+
+    <div class="form-group">
+        <label>Category *</label>
+        <select name="category">
+            <option value="" disabled selected>Select Category*</option>
+            <option value="DT(A)">DT(A)</option>
+            <option value="NT(B)">NT(B)</option>
+            <option value="NT(C)">NT(C)</option>
+            <option value="NT(D)">NT(D)</option>
+            <option value="OBC">OBC</option>
+            <option value="Open">Open</option>
+            <option value="Other">Other</option>
+            <option value="SBC">SBC</option>
+            <option value="SC">SC</option>
+            <option value="SEBC">SEBC</option>
+            <option value="ST">ST</option>
+            <option value="GENERAL">GENERAL</option>
+            <option value="NRI">NRI</option>
+            <option value="EBC">EBC</option>
+            <option value="VJ">VJ</option>
+            <option value="NT">NT</option>
+            <option value="OC">OC</option>
+            <option value="BC">BC</option>
+            <option value="PH">PH</option>
+            <option value="EWS">EWS</option>
+            <option value="BC-A">BC-A</option>
+            <option value="BC-B">BC-B</option>
+            <option value="BC-C">BC-C</option>
+            <option value="BC-D">BC-D</option>
+            <option value="BC-E">BC-E</option>
+            <option value="TFWS">TFWS</option>
+            <option value="MINORITY">MINORITY</option>
+            <option value="DT">DT</option>
+            <option value="J&K">J&K</option>
+            <option value="PMSSS">PMSSS</option>
+            <option value="PTC">PTC</option>
+            <option value="STC">STC</option>
+            <option value="VJ-NT">VJ-NT</option>
+            <option value="OBC (Non-Creamy)">OBC (Non-Creamy)</option>
+            <option value="FC">FC</option>
+            <option value="FC (Jain)">FC (Jain)</option>
+            <option value="BC(M)">BC(M)</option>
+            <option value="MBC">MBC</option>
+            <option value="SC(A)">SC(A)</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Religion *</label>
+        <select name="religion">
+            <option value="" disabled selected>Select Religion</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Jain">Jain</option>
+            <option value="Muslim/Islam">Muslim/Islam</option>
+            <option value="Other">Other</option>
+            <option value="Sikh">Sikh</option>
+            <option value="Parsi">Parsi</option>
+            <option value="Agnostic">Agnostic</option>
+            <option value="Atheist">Atheist</option>
+            <option value="Judaism">Judaism</option>
+            <option value="Neo-Paganism">Neo-Paganism</option>
+            <option value="Non-Religious">Non-Religious</option>
+            <option value="Primal Indigenous">Primal Indigenous</option>
+            <option value="Rastafarianism">Rastafarianism</option>
+            <option value="Secular">Secular</option>
+            <option value="Shinto">Shinto</option>
+            <option value="Spiritism">Spiritism</option>
+            <option value="Tenrikyo">Tenrikyo</option>
+            <option value="Unitarian-Universalism">Unitarian-Universalism</option>
+            <option value="Zoroastrianism">Zoroastrianism</option>
+            <option value="Others / Religion Not Specified">Others / Religion Not Specified</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Country *</label>
+        <select name="country">
+            <option value="" disabled selected>Select Country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Japan">Japan</option>
+            <option value="China">China</option>
+        </select>
+    </div>
+    
+
+
+ <div class="form-group">
+<label>State *</label>
+<div class="input-group">
+    <select name="state">
+        <option value="" disabled selected>Select State</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West Bengal">West Bengal</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Puducherry">Puducherry</option>
+        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+        <option value="Ladakh">Ladakh</option>
+    </select>
+</div>
+</div>
+
+
+<div class="form-group">
+<label>District *</label>
+<select name="district">
+    <option value="">Select a District</option>
+    <option value="Nicobar">Nicobar</option>
+    <option value="North and Middle Andaman">North and Middle Andaman</option>
+    <option value="South Andaman">South Andaman</option>
+    <option value="Anantapur">Anantapur</option>
+    <option value="Chittoor">Chittoor</option>
+    <option value="East Godavari">East Godavari</option>
+    <option value="Guntur">Guntur</option>
+    <option value="Krishna">Krishna</option>
+    <option value="Kurnool">Kurnool</option>
+    <option value="Prakasam">Prakasam</option>
+    <option value="Sri Potti Sriramulu Nellore">Sri Potti Sriramulu Nellore</option>
+    <option value="Srikakulam">Srikakulam</option>
+    <option value="Visakhapatnam">Visakhapatnam</option>
+    <option value="Vizianagaram">Vizianagaram</option>
+    <option value="West Godavari">West Godavari</option>
+    <option value="YSR Kadapa">YSR Kadapa</option>
+    <option value="Anjaw">Anjaw</option>
+    <option value="Changlang">Changlang</option>
+    <option value="Dibang Valley">Dibang Valley</option>
+    <option value="East Kameng">East Kameng</option>
+    <option value="East Siang">East Siang</option>
+    <option value="Kamle">Kamle</option>
+    <option value="Kra Daadi">Kra Daadi</option>
+    <option value="Kurung Kumey">Kurung Kumey</option>
+    <option value="Lepa Rada">Lepa Rada</option>
+    <option value="Lohit">Lohit</option>
+    <option value="Lower Dibang Valley">Lower Dibang Valley</option>
+    <option value="Lower Siang">Lower Siang</option>
+    <option value="Lower Subansiri">Lower Subansiri</option>
+    <option value="Namsai">Namsai</option>
+    <option value="Papum Pare">Papum Pare</option>
+    <option value="Tawang">Tawang</option>
+    <option value="Tirap">Tirap</option>
+    <option value="Upper Siang">Upper Siang</option>
+    <option value="Upper Subansiri">Upper Subansiri</option>
+    <option value="West Kameng">West Kameng</option>
+    <option value="West Siang">West Siang</option>
+    <option value="Baksa">Baksa</option>
+    <option value="Barpeta">Barpeta</option>
+    <option value="Biswanath">Biswanath</option>
+    <option value="Bongaigaon">Bongaigaon</option>
+    <option value="Cachar">Cachar</option>
+    <option value="Darrang">Darrang</option>
+    <option value="Goalpara">Goalpara</option>
+    <option value="Jorhat">Jorhat</option>
+    <option value="Kamrup">Kamrup</option>
+    <option value="Sonitpur">Sonitpur</option>
+    <option value="Tinsukia">Tinsukia</option>
+</select>
+</div>
+
+
+  
+<div class="form-group">
+<label>Department *</label>
+<select name="department">
+    <option value="">Select an option</option>
+    <option value="Adarsh Vijendra Institute of Pharmaceutical Sciences">Adarsh Vijendra Institute of Pharmaceutical Sciences</option>
+    <option value="DEPARTMENT OF CIVIL ENGINEERING">DEPARTMENT OF CIVIL ENGINEERING</option>
+    <option value="Department of Computer Science and Engineering">Department of Computer Science and Engineering</option>
+    <option value="Department of Electronics and Electrical Engineering">Department of Electronics and Electrical Engineering</option>
+    <option value="Department of Mechanical Engineering">Department of Mechanical Engineering</option>
+    <option value="Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center">Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center</option>
+    <option value="Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences">Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences</option>
+    <option value="School of Agriculture and Environmental Sciences">School of Agriculture and Environmental Sciences</option>
+    <option value="School of Basic and Applied Sciences">School of Basic and Applied Sciences</option>
+    <option value="School of Biological Engineering & Science">School of Biological Engineering & Science</option>
+    <option value="School of Business Studies & Entrepreneurship">School of Business Studies & Entrepreneurship</option>
+    <option value="School of Education">School of Education</option>
+    <option value="School of Law And Constitutional Studies">School of Law And Constitutional Studies</option>
+    <option value="School of Liberal Arts & Languages">School of Liberal Arts & Languages</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<label>Programme *</label>
+<select name="programme">
+    <option value="">Select Programme</option>
+    <option value="B.Sc. in Electronics">B.Sc. in Electronics</option>
+    <option value="B.Tech. in Electrical Engineering">B.Tech. in Electrical Engineering</option>
+    <option value="B.Tech. in Electronics & Communication Engineering">B.Tech. in Electronics & Communication Engineering</option>
+    <option value="Bachelor of Arts (General)">Bachelor of Arts (General)</option>
+    <option value="Bachelor of Arts and Bachelor of Law">Bachelor of Arts and Bachelor of Law</option>
+    <option value="Bachelor of Arts in Yoga">Bachelor of Arts in Yoga</option>
+    <option value="Bachelor of Ayurvedic Medicine and Surgery">Bachelor of Ayurvedic Medicine and Surgery</option>
+    <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+    <option value="Bachelor of Commerce (Honours)">Bachelor of Commerce (Honours)</option>
+    <option value="Bachelor of Computer Applications">Bachelor of Computer Applications</option>
+    <option value="Bachelor of Education">Bachelor of Education</option>
+    <option value="Bachelor of Laws">Bachelor of Laws</option>
+    <option value="Bachelor of Naturopathy and Yogic Sciences">Bachelor of Naturopathy and Yogic Sciences</option>
+    <option value="Bachelor of Pharmacy">Bachelor of Pharmacy</option>
+    <option value="Bachelor of Science - Biomedical Science">Bachelor of Science - Biomedical Science</option>
+    <option value="Bachelor of Science - Biotechnology">Bachelor of Science - Biotechnology</option>
+    <option value="Bachelor of Science - Microbiology">Bachelor of Science - Microbiology</option>
+    <option value="Bachelor of Science in Agriculture">Bachelor of Science in Agriculture</option>
+    <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+    <option value="Bachelor of Science-(PCM)">Bachelor of Science-(PCM)</option>
+    <option value="Bachelor of Technology Civil Engineering">Bachelor of Technology Civil Engineering</option>
+    <option value="Bachelor of Technology in Basic and Applied Sciences">Bachelor of Technology in Basic and Applied Sciences</option>
+    <option value="Bachelor of Technology in Computer Science and Engineering">Bachelor of Technology in Computer Science and Engineering</option>
+    <option value="Bachelor of Technology in Mechanical Engineering">Bachelor of Technology in Mechanical Engineering</option>
+    <option value="Diploma in Civil Engineering">Diploma in Civil Engineering</option>
+    <option value="Diploma in Computer Science and Engineering">Diploma in Computer Science and Engineering</option>
+    <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
+    <option value="Diploma in Electronics and Communication Engineering">Diploma in Electronics and Communication Engineering</option>
+    <option value="Diploma in Elementary Education">Diploma in Elementary Education</option>
+    <option value="Diploma in Engineering in Basic and Applied Sciences">Diploma in Engineering in Basic and Applied Sciences</option>
+    <option value="Diploma in Mechanical Engineering">Diploma in Mechanical Engineering</option>
+    <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
+    <option value="Doctor of Philosophy in Electrical">Doctor of Philosophy in Electrical</option>
+    <option value="Doctor of Philosophy in Electronics">Doctor of Philosophy in Electronics</option>
+    <option value="Doctor of Philosophy in Law">Doctor of Philosophy in Law</option>
+    <option value="Doctor of Philosophy in Management">Doctor of Philosophy in Management</option>
+    <option value="Doctor of Philosophy in Pharmacy">Doctor of Philosophy in Pharmacy</option>
+    <option value="M.Sc. in Electronics">M.Sc. in Electronics</option>
+    <option value="M.Tech. in Communication Engineering">M.Tech. in Communication Engineering</option>
+    <option value="Master of Arts (Education)">Master of Arts (Education)</option>
+    <option value="Master of Arts (English)">Master of Arts (English)</option>
+    <option value="Master of Arts (Hindi)">Master of Arts (Hindi)</option>
+    <option value="Master of Arts (Political Science)">Master of Arts (Political Science)</option>
+    <option value="Master of Arts in Applied Yoga & Health">Master of Arts in Applied Yoga & Health</option>
+    <option value="Master of Business Administration">Master of Business Administration</option>
+    <option value="Master of Commerce">Master of Commerce</option>
+    <option value="Master of Computer Applications">Master of Computer Applications</option>
+    <option value="Master of Laws">Master of Laws</option>
+    <option value="Master of Pharmacy in Pharmaceutical Chemistry">Master of Pharmacy in Pharmaceutical Chemistry</option>
+    <option value="Master of Pharmacy in Pharmaceutics">Master of Pharmacy in Pharmaceutics</option>
+    <option value="Master of Pharmacy in Pharmacology">Master of Pharmacy in Pharmacology</option>
+    <option value="Master of Philosophy">Master of Philosophy</option>
+    <option value="Master of Science - Biomedical Science">Master of Science - Biomedical Science</option>
+    <option value="Master of Science - Biotechnology">Master of Science - Biotechnology</option>
+    <option value="Master of Science - Chemistry">Master of Science - Chemistry</option>
+    <option value="Master of Science - Mathematics">Master of Science - Mathematics</option>
+    <option value="Master of Science - Microbiology">Master of Science - Microbiology</option>
+    <option value="Master of Science - Physics">Master of Science - Physics</option>
+    <option value="Master of Science in Agronomy">Master of Science in Agronomy</option>
+    <option value="Master of Science in Horticulture">Master of Science in Horticulture</option>
+    <option value="Master of Technology - CAD/CAM">Master of Technology - CAD/CAM</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<label>Admission Type *</label>
+<select name="admissionType">
+    <option value="">Select</option>
+    <option value="Regular">Regular</option>
+    <option value="Private">Private</option>
+</select>
+</div>
+
+
+
+    <div class="form-group">
+        <label>Hostel Required *</label>
+        <select name="hostelRequired" >
+            <option value="" >Select</option>
+            <option value="YES" >YES</option>
+            <option value="NO" >NO</option>
+        </select>
+        
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label>Transportation Required *</label>
+        <select name="transportationRequired">
+            <option value="">Select</option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Gender *</label>
+        <select name="gender">
+            <option value="">Select</option>
+            <option value="MALE">MALE</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    
+   <div class="form-group">
+    <label>First Name *</label>
+    <input type="text" name="firstName" placeholder="First Name" required oninput="nameValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Middle Name</label>
+    <input type="text" name="middleName" placeholder="Middle Name" oninput="nameValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Last Name *</label>
+    <input type="text" name="lastName" placeholder="Last Name" required oninput="nameValidation(this)">
+</div>
+
+
+    
+    <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email"  >
+    </div>
+    
+   <div class="form-group">
+    <label>Mobile Number *</label>
+    <input type="text" name="mobileNumber" placeholder="Mobile Number" required oninput="mobileNumberValidation(this)">
+</div>
+    
+    <div class="form-group">
+        <label>Date of Birth *</label>
+        <input type="date" name="dob" >
+    </div>
+    
+   <div class="form-group">
+    <label>Aadhar No *</label>
+    <input type="text" name="aadharNumber" placeholder="Enter Aadhar Number" required oninput="aadharValidation(this)">
+</div>
+
+    <div class="form-group">
+        <label>Address 1 *</label>
+        <input type="text" name="address">
+    </div>
+<div class="form-group">
+    <label>Pin Code *</label>
+    <input type="text" name="pincode" placeholder="Enter Pin Code" required oninput="pincodeValidation(this)">
+</div>
+    
+    <h3>Parent Details</h3>
+    
+    <div class="form-group">
+    <label>Father's Occupation *</label>
+    <input type="text" name="fatherOccupation" placeholder="Father's Occupation" required oninput="occupationValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Father's Name *</label>
+    <input type="text" name="fatherName" placeholder="Father's Name" required oninput="nameValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Guardian Mobile Number *</label>
+    <input type="text" name="guardianMobileNumber" placeholder="Guardian Mobile Number" required oninput="mobileNumberValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Mother's Name *</label>
+    <input type="text" name="motherName" placeholder="Mother's Name" required oninput="nameValidation(this)">
+</div>
+
+    <h3>Education Details</h3>
+    
+    <div class="form-group">
+        <label>12 Stream *</label>
+        <select name="twelfthStream">
+            <option value="">Select a slot</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
+            <option value="Science">Science</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Other">Other</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="PCB">PCB</option>
+            <option value="PCM">PCM</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+    <label>10th Marks/Grade *</label>
+    <input type="text" name="tenthGrade" placeholder="Enter 10th Marks/Grade" required oninput="marksGradeValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>10th Passing Year *</label>
+    <input type="text" name="tenthPassingYear" placeholder="Enter 10th Passing Year" required oninput="yearValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>10th Board *</label>
+    <input type="text" name="tenthBoard" placeholder="Enter 10th Board" required oninput="boardUniversityValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>12th Marks/Grade *</label>
+    <input type="text" name="twelfthGrade" placeholder="Enter 12th Marks/Grade" required oninput="marksGradeValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>12th Passing Year *</label>
+    <input type="text" name="twelfthPassingYear" placeholder="Enter 12th Passing Year" required oninput="yearValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>12th Board *</label>
+    <input type="text" name="twelfthBoard" placeholder="Enter 12th Board" required oninput="boardUniversityValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Graduation Marks/Grade *</label>
+    <input type="text" name="graduationGrade" placeholder="Enter Graduation Marks/Grade" required oninput="marksGradeValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Graduation Passing Year *</label>
+    <input type="text" name="graduationPassingYear" placeholder="Enter Graduation Passing Year" required oninput="yearValidation(this)">
+</div>
+
+<div class="form-group">
+    <label>Graduation University *</label>
+    <input type="text" name="graduationUniversity" placeholder="Enter Graduation University" required oninput="boardUniversityValidation(this)">
+</div>
+    <div class="form-group">
+        <label>Profile Image *</label>
+        <input type="file" name="profileImage" required accept="image/*">
+
+    </div>
+    <div class="form-group">
+        <label>Required documents *</label>
+        <input type="file" name="documents" required accept="application/pdf">
+    </div>
+    
+    <button type="submit">Submit</button>
+    
+</form>
+
+
+
+</div>
+`
+
+    })
+</script>
+
+<script>
+    function nameValidation(input) {
+        // Remove any non-alphabetic characters (including numbers)
+        input.value = input.value.replace(/[^a-zA-Z ]/g, '');
+    }
+
+    function mobileNumberValidation(input) {
+        // Remove any non-numeric characters
+        input.value = input.value.replace(/[^0-9]/g, '');
+    }
+
+    function aadharValidation(input) {
+        // Remove any non-numeric characters
+        input.value = input.value.replace(/[^0-9]/g, '');
+
+        // Ensure the input doesn't exceed 12 digits
+        if (input.value.length > 12) {
+            input.value = input.value.slice(0, 12); // Limit to 12 digits
+        }
+    }
+    function pincodeValidation(input) {
+        // Remove any non-numeric characters
+        input.value = input.value.replace(/[^0-9]/g, '');
+
+        // Ensure the input doesn't exceed 6 digits
+        if (input.value.length > 11) {
+            input.value = input.value.slice(0, 6); // Limit to 6 digits
+        }
+    }
+     
+
+    // Validation for father's occupation (only alphabetic characters and spaces)
+    function occupationValidation(input) {
+        // Allow only alphabetic characters and spaces
+        input.value = input.value.replace(/[^a-zA-Z ]/g, '');
+    }
+     // Validation for Marks/Grade (Allows letters and numbers)
+     function marksGradeValidation(input) {
+        // Allow only alphanumeric characters (e.g., A, B, 95, etc.)
+        input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+    }
+
+    // Validation for Year fields (Allows only 4 digits for year)
+    function yearValidation(input) {
+        // Allow only numbers and ensure it has exactly 4 digits
+        input.value = input.value.replace(/[^0-9]/g, '');
+        if (input.value.length > 4) {
+            input.value = input.value.slice(0, 4); // Limit to 4 digits
+        }
+    }
+
+    // Validation for Board/University fields (Only alphabetic characters and spaces allowed)
+    function boardUniversityValidation(input) {
+        // Allow only alphabetic characters and spaces (e.g., "CBSE", "University of XYZ")
+        input.value = input.value.replace(/[^a-zA-Z ]/g, '');
+    }
+
+
+  
+</script>
+
+
+
+

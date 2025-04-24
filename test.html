@@ -1,0 +1,95 @@
+<!-- http://localhost:3000/api/admin/manageStudents?success=addmission_SUCCESS&studentId=8&addmissionNumber=ADM1743445484540&enrollmentNumber=ENR20253022&rollNumber=2025-7807 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .student {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Attendance Form</h3>
+
+    <label for="programme">Programme:</label>
+    <select id="programme">
+        <option value="B.Tech">B.Tech</option>
+        <option value="M.Tech">M.Tech</option>
+    </select>
+
+    <label for="semester">Semester:</label>
+    <select id="semester">
+        <option value="1">1st</option>
+        <option value="2">2nd</option>
+    </select>
+
+    <label for="course">Course:</label>
+    <select id="course">
+        <option value="DBMS">DBMS</option>
+        <option value="OS">Operating System</option>
+    </select>
+
+    <h4>Students</h4>
+    <div id="students-list">
+        <div class="student">
+            <span>John Doe</span>
+            <label><input type="radio" name="student1" value="Present"> Present</label>
+            <label><input type="radio" name="student1" value="Absent"> Absent</label>
+        </div>
+        <div class="student">
+            <span>Jane Smith</span>
+            <label><input type="radio" name="student2" value="Present"> Present</label>
+            <label><input type="radio" name="student2" value="Absent"> Absent</label>
+        </div>
+    </div>
+
+    <button onclick="submitAttendance()">Submit</button>
+</div>
+
+<script>
+    function submitAttendance() {
+        alert("Attendance submitted successfully!");
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<div class="profile-container" >
+   
+</div>

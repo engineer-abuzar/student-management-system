@@ -1,0 +1,72 @@
+
+
+form {
+    width: 70%;  
+    max-height: 90vh; 
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+
+    overflow: auto; 
+    background: #f9f9f9;
+}
+label {
+    font-weight: bold;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background-color: #5e46b4;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #4a3a8a;
+}
+
+
+.form-status {
+    background-color: #f8f9fa; /* Light gray background */
+    border-left: 5px solid #007bff; /* Blue left border for highlight */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px; /* Smooth corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.form-status h3 {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-status h3 a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-status h3 a:hover {
+    text-decoration: underline;
+}
+
+.form-status h4 {
+    color: #ff9800; /* Orange for "Pending" status */
+    font-size: 16px;
+    margin-top: 10px;
+}

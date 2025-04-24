@@ -1,0 +1,440 @@
+<div class="profile-container">
+
+
+    <div class="nav-tabs">
+        <a id="student-details" style="cursor: pointer;" class="active">Student Details</a>
+        <a id="upload-documents" style="cursor: pointer;" >Uploaded Documents</a>
+        <a id="attendance" style="cursor: pointer;">Attendance</a>
+        
+        <a id="mentor-details" style="cursor: pointer;">Mentor Details</a>
+    </div>
+
+
+
+    <div id="changeable-container">
+
+        <!-- Basic Information -->
+        <fieldset>
+            <legend>Basic Information</legend>
+            <div class="profile">
+                <img src="data:image/jpeg;base64,<%= user.profileImage.toString('base64') %>" alt="Profile Picture">
+            </div>
+            <div class="details">
+                <table>
+                    <tr><td>Full Name</td><td><%-locals.user.firstName %> <%-locals.user.middleName %> <%-locals.user.lastName %></td></tr>
+                    <tr><td>Email</td><td><%=locals.user.email %></td></tr>
+                    <tr><td>Phone</td><td><%-locals.user.mobileNumber %></td></tr>
+                    <tr><td>Date of Birth</td><td><%-locals.user.dob %></td></tr>
+                    <tr><td>Gender</td><td><%-locals.user.gender %></td></tr>
+                    <tr><td>Religion</td><td><%-locals.user.religion %></td></tr>
+                    <tr><td>Category</td><td><%-locals.user.category %></td></tr>
+                    <tr><td>Aadhar Number</td><td><%-locals.user.aadharNumber %></td></tr>
+                    <tr><td>Address</td><td><%-locals.user.address %>, <%-locals.user.district %>, <%-locals.user.state %>, <%-locals.user.country %> - <%-locals.user.pincode %></td></tr>
+                </table>
+            </div>
+        </fieldset>
+
+        <!-- Parent Details -->
+        <fieldset>
+            <legend>Parent Details</legend>
+            <div class="details">
+                <table>
+                    <tr><td>Father's Name</td><td><%-locals.user.fatherName %></td></tr>
+                    <tr><td>Father's Occupation</td><td><%-locals.user.fatherOccupation %></td></tr>
+                    <tr><td>Mother's Name</td><td><%-locals.user.motherName %></td></tr>
+                    <tr><td>Guardian's Mobile</td><td><%-locals.user.gurdianMobileNumber %></td></tr>
+                </table>
+            </div>
+        </fieldset>
+
+        <!-- Academic Details -->
+        <fieldset>
+            <legend>Academic Details</legend>
+            <div class="details">
+                <table>
+                    <tr><td>Programme</td><td><%-locals.user.programme %></td></tr>
+                    <tr><td>Department</td><td><%-locals.user.department %></td></tr>
+                    <tr><td>Batch Year</td><td>2023</td></tr>
+                    <tr><td>Admission Type</td><td><%-locals.user.admissionType %></td></tr>
+                    <tr><td>Current Year</td><td>2nd Year</td></tr>
+                    <tr><td>Current Semester</td><td>4th Semester</td></tr>
+                    <tr><td>Session</td><td><%-locals.user.session %></td></tr>
+                    <tr><td>Admission Date</td><td><%-locals.user.addmissionDate %></td></tr>
+                </table>
+            </div>
+        </fieldset>
+
+        <!-- School & Graduation Details -->
+        <fieldset>
+            <legend>School & Graduation</legend>
+            <div class="details">
+                <table>
+                    <tr><td>10th Grade</td><td><%-locals.user.tenthGrade %></td></tr>
+                    <tr><td>10th Passing Year</td><td><%-locals.user.tenthPassingYear %></td></tr>
+                    <tr><td>10th Board</td><td><%-locals.user.tenthBoard %></td></tr>
+                    <tr><td>12th Stream</td><td><%-locals.user.twelfthStream %></td></tr>
+                    <tr><td>12th Grade</td><td><%-locals.user.twelfthGrade %></td></tr>
+                    <tr><td>12th Passing Year</td><td><%-locals.user.twelfthPassingYear %></td></tr>
+                    <tr><td>12th Board</td><td><%-locals.user.twelfthBoard %></td></tr>
+                    <tr><td>Graduation Grade</td><td><%-locals.user.graduationGrade %></td></tr>
+                    <tr><td>Graduation Passing Year</td><td><%-locals.user.graduationPassingYear %></td></tr>
+                    <tr><td>Graduation University</td><td><%-locals.user.graduationUniversity %></td></tr>
+                </table>
+            </div>
+        </fieldset>
+
+        <!-- Additional Information -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            <div class="details">
+                <table>
+                    <tr><td>Quota</td><td><%-locals.user.category %></td></tr>
+                    <tr><td>Admission Number</td><td><%-locals.user.admissionNumber %></td></tr>
+                    <tr><td>Enrollment Number</td><td><%-locals.user.enrollmentNumber %></td></tr>
+                    <tr><td>Roll Number</td><td><%-locals.user.rollNumber %></td></tr>
+                    <tr><td>Section</td><td><%-locals.user.section || 'N/A' %></td></tr>
+                    <tr><td>Hostel Required</td><td><%-locals.user.hostelRequired %></td></tr>
+                    <tr><td>Transport Required</td><td><%-locals.user.transportationRequired %></td></tr>
+                </table>
+            </div>
+        </fieldset>
+
+
+    </div>
+</div>
+
+<style>
+    legend {
+       
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5e46b4;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    border: 2px solid #5e46b4;
+}
+fieldset {
+    margin-top: 20px;   
+    border: 2px solid #5e46b4;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+</style>
+<script>
+
+
+    const mentorDetails= document.getElementById('mentor-details')
+    mentorDetails.addEventListener('click',()=>{
+     document.getElementById('upload-documents').classList.remove('active')
+     document.getElementById('attendance').classList.remove('active')
+     document.getElementById('student-details').classList.remove('active')
+    document.getElementById('changeable-container').innerHTML=`
+ <div class="mentor-container">
+     <h2 style="text-align: center; color: #E74C3C;">Mentor List</h2>
+ 
+     <div class="mentor-card">
+         <div class="mentor-info">
+             <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+             <div>
+                 <div class="mentor-name">Dr. Amit Sharma</div>
+                 <div class="mentor-contact">📞 +91 98765 43210</div>
+             </div>
+         </div>
+         <button class="contact-btn">Contact</button>
+     </div>
+ 
+     <div class="mentor-card">
+         <div class="mentor-info">
+             <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+             <div>
+                 <div class="mentor-name">Prof. Neha Gupta</div>
+                 <div class="mentor-contact">📞 +91 87654 32109</div>
+             </div>
+         </div>
+         <button class="contact-btn">Contact</button>
+     </div>
+ 
+     <div class="mentor-card">
+         <div class="mentor-info">
+             <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+             <div>
+                 <div class="mentor-name">Dr. Rajesh Kumar</div>
+                 <div class="mentor-contact">📞 +91 76543 21098</div>
+             </div>
+         </div>
+         <button class="contact-btn">Contact</button>
+     </div>
+ 
+ </div>
+    `
+    if (!document.querySelector('link[href="/stylesheets/mentorDetails.css"]')) {
+         const link = document.createElement("link");
+         link.rel = "stylesheet";
+         link.href = "/stylesheets/mentorDetails.css";
+         document.head.appendChild(link);
+     }
+  mentorDetails.classList.add("active");
+    })
+ </script>
+
+
+<script>
+    const attendance = document.getElementById('attendance');
+
+    attendance.addEventListener('click', () => {
+        document.getElementById('mentor-details').classList.remove('active');
+        document.getElementById('student-details').classList.remove('active');
+        document.getElementById('upload-documents').classList.remove('active');
+
+        attendance.classList.add("active");
+
+        // EJS Check for Admission Status
+   '     <% if (user.addmissionStatus) { %>'
+   fetch('/api/user/getAttendance?rollNumber=<%= user.rollNumber %>')
+    .then(response => response.json())
+    .then((attendanceSummary) => {
+   
+        let totalPresent = 0;
+        let totalAbsent = 0;
+        let totalSessions = 0;
+        let tableRows = "";
+
+        // Loop through each course in attendanceSummary
+        for (const course in attendanceSummary) {
+            let present = attendanceSummary[course].present;
+            let absent = attendanceSummary[course].absent;
+            let percentage = (present + absent) ? ((present / (present + absent)) * 100).toFixed(2) : 0;
+
+            totalPresent += present;
+            totalAbsent += absent;
+            totalSessions += present + absent;
+
+            tableRows += `
+                <tr>
+                    <td>${course}</td>
+                    <td>${present}</td>
+                    <td>${absent}</td>
+                    <td>${percentage}%</td>
+                </tr>
+            `;
+        }
+
+        let attendancePercentage = totalSessions ? ((totalPresent / totalSessions) * 100).toFixed(2) : 0;
+
+        // Insert into the DOM
+        document.getElementById('changeable-container').innerHTML = `
+            <div class="container">
+                <div class="tabs">
+                    <div class="tab active">Attendance Records</div>
+                </div>
+
+                <div class="legend">
+                    <div><span class="blue"></span> Present</div>
+                    <div><span class="red"></span> Absent</div>
+                </div>
+
+                <div class="attendance-info">${attendancePercentage}%</div>
+
+          
+
+                <div class="details">
+                    <div>Total Sessions: <b>${totalSessions}</b></div>
+                    <div>Present: <b>${totalPresent}</b></div>
+                    <div>Absent: <b>${totalAbsent}</b></div>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Attended</th>
+                        <th>Absent</th>
+                        <th>Percentage</th>
+                    </tr>
+                    ${tableRows}
+                </table>
+            </div>
+        `;
+    })
+    .catch(error => console.error("Error fetching attendance:", error));
+
+      '  <% } else { %>'
+            document.getElementById('changeable-container').innerHTML = `
+                <style>
+                    .notice {
+                        width: 80%;
+                        margin: 20px auto;
+                        padding: 15px;
+                        background-color: #f8d7da;
+                        color: #721c24;
+                        border: 1px solid #f5c6cb;
+                        border-radius: 5px;
+                        text-align: center;
+                        font-family: Arial, sans-serif;
+                    }
+                </style>
+                <div class="notice">
+                    <strong>Notice:</strong> This service will be available for you after admission confirmation.
+                </div>
+            `;
+   '     <% } %>'
+
+        // Add attendance.css only if not already added
+        if (!document.querySelector('link[href="/stylesheets/attendance.css"]')) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "/stylesheets/attendance.css";
+            document.head.appendChild(link);
+        }
+    });
+</script>
+
+
+
+<!-- student details -->
+<script>
+    const studentDetails=document.getElementById('student-details')
+    studentDetails.addEventListener('click',()=>{
+        document.getElementById('mentor-details').classList.remove('active')
+        document.getElementById('attendance').classList.remove('active')
+        document.getElementById('upload-documents').classList.remove('active')
+      
+      document.getElementById('changeable-container').innerHTML=`
+      <div class="section-title">Student Details</div>
+    <div class="profile">
+        <img src="data:image/jpeg;base64,<%= user.profileImage.toString('base64') %>" alt="Profile Picture">
+
+        <div class="profile-info">
+            <h2><%-locals.user.firstName %> <%-locals.user.lastName %></h2>
+        </div>
+    </div>
+
+    <div class="details">
+        <table>
+            <tr>
+                <td>Registration ID</td>
+                <td><%-locals.user.admissionNumber %></td>
+            </tr>
+            <tr>
+                <td>Application Number</td>
+                <td><%-locals.user.enrollmentNumber %></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><%=locals.user.email %></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><%-locals.user.mobileNumber %></td>
+            </tr>
+            <tr>
+                <td>Programme</td>
+                <td><%-locals.user.programme %></td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td><%-locals.user.department %></td>
+            </tr>
+            <tr>
+                <td>Batch Year</td>
+                <td>2023</td>
+            </tr>
+            <tr>
+                <td>Academic Status</td>
+                <td><%-locals.user.admissionType %></td>
+            </tr>
+            <tr>
+                <td>Current Year</td>
+                <td>2nd Year</td>
+            </tr>
+            <tr>
+                <td>Current Term</td>
+                <td>4th Semester</td>
+            </tr>
+            <tr>
+                <td>Quota</td>
+                <td>General</td>
+            </tr>
+            <tr>
+                <td>Admission Type</td>
+                <td><%-locals.user.addmissionType %></td>
+            </tr>
+            <tr>
+                <td>Section</td>
+                <td>A</td>
+            </tr>
+        </table>
+    </div>`
+
+
+    if (!document.querySelector('link[href="/stylesheets/studentDetails.css"]')) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "/stylesheets/studentDetails.css";
+      document.head.appendChild(link);
+  }
+
+studentDetails.classList.add("active");
+
+        
+
+    })
+</script>
+
+<!-- upload documents  -->
+
+<script>
+const uploadDocuments=document.getElementById('upload-documents')
+uploadDocuments.addEventListener('click',()=>{
+    document.getElementById('mentor-details').classList.remove('active')
+        document.getElementById('attendance').classList.remove('active')
+        document.getElementById('student-details').classList.remove('active')
+        '<% if(user.documentStatus){%>'
+        fetch('http://localhost:3000/api/user/getPdf').then(response=>response.json())
+        .then(data=>{
+            const pdfUrl = `data:application/pdf;base64,${data.pdf}`;
+            document.getElementById('pdfViewer').src = pdfUrl;
+        
+           
+        }).catch(error=>{
+            console.log("error fecthing the pdf ",error)
+            alert('service not available ')
+        })
+
+        document.getElementById('changeable-container').innerHTML=`
+       
+            <div class="pdf-container">
+   <iframe id="pdfViewer"  width="100%" height="500px"></iframe>
+</div>
+
+`
+'<% } else {%>'
+    document.getElementById('changeable-container').innerHTML=`<style>
+            .notice {
+                width: 80%;
+                margin: 20px auto;
+                padding: 15px;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+            }
+        </style>
+  <div class="notice">
+    <strong>Notice:</strong> This service will be available for you after documents upload.
+</div>`
+
+    '<%}%>'
+
+
+
+uploadDocuments.classList.add('active')
+
+
+})
+</script>

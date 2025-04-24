@@ -1,0 +1,80 @@
+
+    <style>
+    
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            color: #5e46b4;
+            border-bottom: 3px solid #5e46b4;
+        }
+
+        .content-container {
+          
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: auto;
+            margin-top: 20px;
+        }
+    </style>
+
+<div class="classroom-container" style="width: 100%; margin-top: 20px;">
+    
+    <div class="tabs-container">
+        <div class="tab active" onclick="changeTab('courseWork', this)">Course Work</div>
+        <div class="tab" onclick="changeTab('resources', this)">Resources</div>
+        <div class="tab" onclick="changeTab('quizzes', this)">Quizzes</div>
+        <div class="tab" onclick="changeTab('assignments', this)">Assignments</div>
+        <div class="tab" onclick="changeTab('assessmentResults', this)">Assessment Results</div>
+    </div>
+
+    <div class="content-container" id="content">
+        <h2>Course Work</h2>
+        <p>Details about the course materials and syllabus.</p>
+    </div>
+
+    <script>
+        function changeTab(tabName, element) {
+            // Tab content mapping
+            const tabContent = {
+                courseWork: "<h2>Course Work</h2><p>Details about the course materials and syllabus.</p>",
+                resources: "<h2>Resources</h2><p>Important reference books, notes, and links.</p>",
+                quizzes: "<h2>Quizzes</h2><p>Upcoming quizzes and past quiz results.</p>",
+                assignments: "<h2>Assignments</h2><p>Current assignments, deadlines, and submissions.</p>",
+                assessmentResults: "<h2>Assessment Results</h2><p>View your grades and performance reports.</p>"
+            };
+
+            // Update content
+            document.getElementById("content").innerHTML = tabContent[tabName];
+
+            // Update active tab styling
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            element.classList.add("active");
+        }
+    </script>
+
+
+</div>

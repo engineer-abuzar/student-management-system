@@ -1,0 +1,49 @@
+
+<div class="dashboard">
+    <div class="welcome-title">Welcome to Your Dashboard</div>
+    <% if(!studentDetails.isAddmissionFormFilled) {%>
+        <div class="welcome-text">Thank you for registering! Fill your Addmission form to secure your seat.</div>
+    
+        <%}else if(!studentDetails.documentStatus){%>
+            <div class="welcome-text">you have not uploaded the documents please upload documents!!!</div>
+   <%}%>
+    <div class="student-card">
+        <img src="data:image/jpeg;base64,<%-locals.profileImage %>" alt="Student Photo" class="student-photo">
+        <div class="student-name"><%-locals.studentDetails.firstName %> <%-locals.studentDetails.lastName %></div>
+        <div class="student-info">Department : <%-locals.studentDetails.department %></div>
+        <div class="student-info">Programme: <%-locals.studentDetails.programme %></div>
+        <div class="student-info"> email: <%-locals.studentDetails.email %></div>
+        <div class="student-info"> MobileNumber: <%-locals.studentDetails.mobileNumber %></div>
+
+    </div>
+
+    <div class="actions">
+     <% if(!studentDetails.isAddmissionFormFilled) {%>
+        <button class="action-btn"><a class="action-route" href="/api/user/addmissionForm">Fill Addmission Form</a></button>
+        <%}%>
+     <% if(!studentDetails.documentStatus) {%>
+        <button class="action-btn"><a class="action-route" href="/api/user/uploadDocuments">Upload Documents</a></button>
+        <%}%>
+      
+    </div>
+
+    <div class="college-info">
+        <div class="college-title">About Our College</div>
+        <div class="college-details">
+            Welcome to Shobhit University! We are dedicated to providing world-class education with modern facilities and expert faculty.
+        </div>
+
+        <div class="college-title">Contact Us</div>
+        <div class="college-details">
+            📍 Location: Meerut, Uttar Pradesh, India<br>
+            📞 Phone: +91 1234567890<br>
+            ✉️ Email: info@shobhituniversity.ac.in
+        </div>
+
+        <div class="important-links">
+            <a href="https://www.shobhituniversity.ac.in/">Official Website</a>
+            <a href="/api/user/academicCalendar">Academic Calendar</a>
+            <a href="#">Student Portal</a>
+        </div>
+    </div>
+</div>

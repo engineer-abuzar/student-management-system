@@ -1,0 +1,500 @@
+   
+    <form method="post" action="/api/user/addmissionForm">
+        <div class="form-status">
+          <%if(studentDetails.isAddmissionFormFilled){ %>
+            <% if(!studentDetails.documentStatus){ %>
+                <h3>your Application has been submitted. Please upload required documents <a href="/api/user/uploadDocuments" > click here</a></h3>
+                <% } %>
+            <h4 style="display: inline; ">Status : <% if(studentDetails.addmissionStatus){ %>
+               <h4 style="color: green; display: inline;"> Your admission is confirmed</h4>
+            <% }else{ %>
+                Pending
+            </h4>
+
+            <% }} %>
+
+        </div>
+        <h2>Personal Details</h2>
+
+        <div class="form-group">
+            <label>Category *</label>
+            <select name="category" <%-locals.disabledStatus %>>
+                <option value="" disabled <%= !locals.studentDetails.category ? 'selected' : '' %>>Select Category*</option>
+                <option value="DT(A)" <%= locals.studentDetails.category == 'DT(A)' ? 'selected' : '' %>>DT(A)</option>
+                <option value="NT(B)" <%= locals.studentDetails.category == 'NT(B)' ? 'selected' : '' %>>NT(B)</option>
+                <option value="NT(C)" <%= locals.studentDetails.category == 'NT(C)' ? 'selected' : '' %>>NT(C)</option>
+                <option value="NT(D)" <%= locals.studentDetails.category == 'NT(D)' ? 'selected' : '' %>>NT(D)</option>
+                <option value="OBC" <%= locals.studentDetails.category == 'OBC' ? 'selected' : '' %>>OBC</option>
+                <option value="Open" <%= locals.studentDetails.category == 'Open' ? 'selected' : '' %>>Open</option>
+                <option value="Other" <%= locals.studentDetails.category == 'Other' ? 'selected' : '' %>>Other</option>
+                <option value="SBC" <%= locals.studentDetails.category == 'SBC' ? 'selected' : '' %>>SBC</option>
+                <option value="SC" <%= locals.studentDetails.category == 'SC' ? 'selected' : '' %>>SC</option>
+                <option value="SEBC" <%= locals.studentDetails.category == 'SEBC' ? 'selected' : '' %>>SEBC</option>
+                <option value="ST" <%= locals.studentDetails.category == 'ST' ? 'selected' : '' %>>ST</option>
+                <option value="GENERAL" <%= locals.studentDetails.category == 'GENERAL' ? 'selected' : '' %>>GENERAL</option>
+                <option value="NRI" <%= locals.studentDetails.category == 'NRI' ? 'selected' : '' %>>NRI</option>
+                <option value="EBC" <%= locals.studentDetails.category == 'EBC' ? 'selected' : '' %>>EBC</option>
+                <option value="VJ" <%= locals.studentDetails.category == 'VJ' ? 'selected' : '' %>>VJ</option>
+                <option value="NT" <%= locals.studentDetails.category == 'NT' ? 'selected' : '' %>>NT</option>
+                <option value="OC" <%= locals.studentDetails.category == 'OC' ? 'selected' : '' %>>OC</option>
+                <option value="BC" <%= locals.studentDetails.category == 'BC' ? 'selected' : '' %>>BC</option>
+                <option value="PH" <%= locals.studentDetails.category == 'PH' ? 'selected' : '' %>>PH</option>
+                <option value="EWS" <%= locals.studentDetails.category == 'EWS' ? 'selected' : '' %>>EWS</option>
+                <option value="BC-A" <%= locals.studentDetails.category == 'BC-A' ? 'selected' : '' %>>BC-A</option>
+                <option value="BC-B" <%= locals.studentDetails.category == 'BC-B' ? 'selected' : '' %>>BC-B</option>
+                <option value="BC-C" <%= locals.studentDetails.category == 'BC-C' ? 'selected' : '' %>>BC-C</option>
+                <option value="BC-D" <%= locals.studentDetails.category == 'BC-D' ? 'selected' : '' %>>BC-D</option>
+                <option value="BC-E" <%= locals.studentDetails.category == 'BC-E' ? 'selected' : '' %>>BC-E</option>
+                <option value="TFWS" <%= locals.studentDetails.category == 'TFWS' ? 'selected' : '' %>>TFWS</option>
+                <option value="MINORITY" <%= locals.studentDetails.category == 'MINORITY' ? 'selected' : '' %>>MINORITY</option>
+                <option value="DT" <%= locals.studentDetails.category == 'DT' ? 'selected' : '' %>>DT</option>
+                <option value="J&K" <%= locals.studentDetails.category == 'J&K' ? 'selected' : '' %>>J&K</option>
+                <option value="PMSSS" <%= locals.studentDetails.category == 'PMSSS' ? 'selected' : '' %>>PMSSS</option>
+                <option value="PTC" <%= locals.studentDetails.category == 'PTC' ? 'selected' : '' %>>PTC</option>
+                <option value="STC" <%= locals.studentDetails.category == 'STC' ? 'selected' : '' %>>STC</option>
+                <option value="VJ-NT" <%= locals.studentDetails.category == 'VJ-NT' ? 'selected' : '' %>>VJ-NT</option>
+                <option value="OBC (Non-Creamy)" <%= locals.studentDetails.category == 'OBC (Non-Creamy)' ? 'selected' : '' %>>OBC (Non-Creamy)</option>
+                <option value="FC" <%= locals.studentDetails.category == 'FC' ? 'selected' : '' %>>FC</option>
+                <option value="FC (Jain)" <%= locals.studentDetails.category == 'FC (Jain)' ? 'selected' : '' %>>FC (Jain)</option>
+                <option value="BC(M)" <%= locals.studentDetails.category == 'BC(M)' ? 'selected' : '' %>>BC(M)</option>
+                <option value="MBC" <%= locals.studentDetails.category == 'MBC' ? 'selected' : '' %>>MBC</option>
+                <option value="SC(A)" <%= locals.studentDetails.category == 'SC(A)' ? 'selected' : '' %>>SC(A)</option>
+            </select>
+            
+            
+        </div>
+
+        <div class="form-group">
+            <label>Religion *</label>
+            <select name="religion" <%-locals.disabledStatus %>>
+                <option value="" disabled <%= !locals.studentDetails.religion ? 'selected' : '' %>>Select Religion</option>
+                <option value="Buddhism" <%= locals.studentDetails.religion == 'Buddhism' ? 'selected' : '' %>>Buddhism</option>
+                <option value="Christianity" <%= locals.studentDetails.religion == 'Christianity' ? 'selected' : '' %>>Christianity</option>
+                <option value="Hindu" <%= locals.studentDetails.religion == 'Hindu' ? 'selected' : '' %>>Hindu</option>
+                <option value="Jain" <%= locals.studentDetails.religion == 'Jain' ? 'selected' : '' %>>Jain</option>
+                <option value="Muslim/Islam" <%= locals.studentDetails.religion == 'Muslim/Islam' ? 'selected' : '' %>>Muslim/Islam</option>
+                <option value="Other" <%= locals.studentDetails.religion == 'Other' ? 'selected' : '' %>>Other</option>
+                <option value="Sikh" <%= locals.studentDetails.religion == 'Sikh' ? 'selected' : '' %>>Sikh</option>
+                <option value="Parsi" <%= locals.studentDetails.religion == 'Parsi' ? 'selected' : '' %>>Parsi</option>
+                <option value="Agnostic" <%= locals.studentDetails.religion == 'Agnostic' ? 'selected' : '' %>>Agnostic</option>
+                <option value="Atheist" <%= locals.studentDetails.religion == 'Atheist' ? 'selected' : '' %>>Atheist</option>
+                <option value="Judaism" <%= locals.studentDetails.religion == 'Judaism' ? 'selected' : '' %>>Judaism</option>
+                <option value="Neo-Paganism" <%= locals.studentDetails.religion == 'Neo-Paganism' ? 'selected' : '' %>>Neo-Paganism</option>
+                <option value="Non-Religious" <%= locals.studentDetails.religion == 'Non-Religious' ? 'selected' : '' %>>Non-Religious</option>
+                <option value="Primal Indigenous" <%= locals.studentDetails.religion == 'Primal Indigenous' ? 'selected' : '' %>>Primal Indigenous</option>
+                <option value="Rastafarianism" <%= locals.studentDetails.religion == 'Rastafarianism' ? 'selected' : '' %>>Rastafarianism</option>
+                <option value="Secular" <%= locals.studentDetails.religion == 'Secular' ? 'selected' : '' %>>Secular</option>
+                <option value="Shinto" <%= locals.studentDetails.religion == 'Shinto' ? 'selected' : '' %>>Shinto</option>
+                <option value="Spiritism" <%= locals.studentDetails.religion == 'Spiritism' ? 'selected' : '' %>>Spiritism</option>
+                <option value="Tenrikyo" <%= locals.studentDetails.religion == 'Tenrikyo' ? 'selected' : '' %>>Tenrikyo</option>
+                <option value="Unitarian-Universalism" <%= locals.studentDetails.religion == 'Unitarian-Universalism' ? 'selected' : '' %>>Unitarian-Universalism</option>
+                <option value="Zoroastrianism" <%= locals.studentDetails.religion == 'Zoroastrianism' ? 'selected' : '' %>>Zoroastrianism</option>
+                <option value="Others / Religion Not Specified" <%= locals.studentDetails.religion == 'Others / Religion Not Specified' ? 'selected' : '' %>>Others / Religion Not Specified</option>
+            </select>
+            
+        </div>
+        <div class="form-group">
+            <label>Country *</label>
+            <select name="country" <%-locals.disabledStatus %>>
+                <option value="" disabled <%=(locals.studentDetails.country === "") ? 'selected' : '' %>>Select Country</option>
+                <option value="India" <%=(locals.studentDetails.country === "India") ? 'selected' : '' %>>India</option>
+                <option value="USA" <%=(locals.studentDetails.country === "USA") ? 'selected' : '' %>>USA</option>
+                <option value="UK" <%=(locals.studentDetails.country === "UK") ? 'selected' : '' %>>UK</option>
+                <option value="Canada" <%=(locals.studentDetails.country === "Canada") ? 'selected' : '' %>>Canada</option>
+                <option value="Australia" <%=(locals.studentDetails.country === "Australia") ? 'selected' : '' %>>Australia</option>
+                <option value="Germany" <%=(locals.studentDetails.country === "Germany") ? 'selected' : '' %>>Germany</option>
+                <option value="France" <%=(locals.studentDetails.country === "France") ? 'selected' : '' %>>France</option>
+                <option value="Japan" <%=(locals.studentDetails.country === "Japan") ? 'selected' : '' %>>Japan</option>
+                <option value="China" <%=(locals.studentDetails.country === "China") ? 'selected' : '' %>>China</option>
+            </select>
+            
+    </div>
+        <div class="form-group">
+            <label>State *</label>
+           <div class="input-group">
+            <select name="state" <%-locals.disabledStatus %>>
+                <option value="" disabled <%= !locals.studentDetails.state ? 'selected' : '' %>>Select State</option>
+                <option value="Andhra Pradesh" <%= locals.studentDetails.state === 'Andhra Pradesh' ? 'selected' : '' %>>Andhra Pradesh</option>
+                <option value="Arunachal Pradesh" <%= locals.studentDetails.state === 'Arunachal Pradesh' ? 'selected' : '' %>>Arunachal Pradesh</option>
+                <option value="Assam" <%= locals.studentDetails.state === 'Assam' ? 'selected' : '' %>>Assam</option>
+                <option value="Bihar" <%= locals.studentDetails.state === 'Bihar' ? 'selected' : '' %>>Bihar</option>
+                <option value="Chhattisgarh" <%= locals.studentDetails.state === 'Chhattisgarh' ? 'selected' : '' %>>Chhattisgarh</option>
+                <option value="Goa" <%= locals.studentDetails.state === 'Goa' ? 'selected' : '' %>>Goa</option>
+                <option value="Gujarat" <%= locals.studentDetails.state === 'Gujarat' ? 'selected' : '' %>>Gujarat</option>
+                <option value="Haryana" <%= locals.studentDetails.state === 'Haryana' ? 'selected' : '' %>>Haryana</option>
+                <option value="Himachal Pradesh" <%= locals.studentDetails.state === 'Himachal Pradesh' ? 'selected' : '' %>>Himachal Pradesh</option>
+                <option value="Jharkhand" <%= locals.studentDetails.state === 'Jharkhand' ? 'selected' : '' %>>Jharkhand</option>
+                <option value="Karnataka" <%= locals.studentDetails.state === 'Karnataka' ? 'selected' : '' %>>Karnataka</option>
+                <option value="Kerala" <%= locals.studentDetails.state === 'Kerala' ? 'selected' : '' %>>Kerala</option>
+                <option value="Madhya Pradesh" <%= locals.studentDetails.state === 'Madhya Pradesh' ? 'selected' : '' %>>Madhya Pradesh</option>
+                <option value="Maharashtra" <%= locals.studentDetails.state === 'Maharashtra' ? 'selected' : '' %>>Maharashtra</option>
+                <option value="Manipur" <%= locals.studentDetails.state === 'Manipur' ? 'selected' : '' %>>Manipur</option>
+                <option value="Meghalaya" <%= locals.studentDetails.state === 'Meghalaya' ? 'selected' : '' %>>Meghalaya</option>
+                <option value="Mizoram" <%= locals.studentDetails.state === 'Mizoram' ? 'selected' : '' %>>Mizoram</option>
+                <option value="Nagaland" <%= locals.studentDetails.state === 'Nagaland' ? 'selected' : '' %>>Nagaland</option>
+                <option value="Odisha" <%= locals.studentDetails.state === 'Odisha' ? 'selected' : '' %>>Odisha</option>
+                <option value="Punjab" <%= locals.studentDetails.state === 'Punjab' ? 'selected' : '' %>>Punjab</option>
+                <option value="Rajasthan" <%= locals.studentDetails.state === 'Rajasthan' ? 'selected' : '' %>>Rajasthan</option>
+                <option value="Sikkim" <%= locals.studentDetails.state === 'Sikkim' ? 'selected' : '' %>>Sikkim</option>
+                <option value="Tamil Nadu" <%= locals.studentDetails.state === 'Tamil Nadu' ? 'selected' : '' %>>Tamil Nadu</option>
+                <option value="Telangana" <%= locals.studentDetails.state === 'Telangana' ? 'selected' : '' %>>Telangana</option>
+                <option value="Tripura" <%= locals.studentDetails.state === 'Tripura' ? 'selected' : '' %>>Tripura</option>
+                <option value="Uttar Pradesh" <%= locals.studentDetails.state === 'Uttar Pradesh' ? 'selected' : '' %>>Uttar Pradesh</option>
+                <option value="Uttarakhand" <%= locals.studentDetails.state === 'Uttarakhand' ? 'selected' : '' %>>Uttarakhand</option>
+                <option value="West Bengal" <%= locals.studentDetails.state === 'West Bengal' ? 'selected' : '' %>>West Bengal</option>
+                <option value="Andaman and Nicobar Islands" <%= locals.studentDetails.state === 'Andaman and Nicobar Islands' ? 'selected' : '' %>>Andaman and Nicobar Islands</option>
+                <option value="Chandigarh" <%= locals.studentDetails.state === 'Chandigarh' ? 'selected' : '' %>>Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu" <%= locals.studentDetails.state === 'Dadra and Nagar Haveli and Daman and Diu' ? 'selected' : '' %>>Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Lakshadweep" <%= locals.studentDetails.state === 'Lakshadweep' ? 'selected' : '' %>>Lakshadweep</option>
+                <option value="Delhi" <%= locals.studentDetails.state === 'Delhi' ? 'selected' : '' %>>Delhi</option>
+                <option value="Puducherry" <%= locals.studentDetails.state === 'Puducherry' ? 'selected' : '' %>>Puducherry</option>
+                <option value="Jammu and Kashmir" <%= locals.studentDetails.state === 'Jammu and Kashmir' ? 'selected' : '' %>>Jammu and Kashmir</option>
+                <option value="Ladakh" <%= locals.studentDetails.state === 'Ladakh' ? 'selected' : '' %>>Ladakh</option>
+            </select>
+            
+            
+</div>
+
+        </div>
+
+        <div class="form-group">
+            <label>District *</label>
+            <select name="district" <%-locals.disabledStatus %>>
+                <option value="" <%= locals.studentDetails.district === "" ? "selected" : "" %>>Select a District</option>
+                <option value="Nicobar" <%= locals.studentDetails.district === "Nicobar" ? "selected" : "" %>>Nicobar</option>
+                <option value="North and Middle Andaman" <%= locals.studentDetails.district === "North and Middle Andaman" ? "selected" : "" %>>North and Middle Andaman</option>
+                <option value="South Andaman" <%= locals.studentDetails.district === "South Andaman" ? "selected" : "" %>>South Andaman</option>
+                <option value="Anantapur" <%= locals.studentDetails.district === "Anantapur" ? "selected" : "" %>>Anantapur</option>
+                <option value="Chittoor" <%= locals.studentDetails.district === "Chittoor" ? "selected" : "" %>>Chittoor</option>
+                <option value="East Godavari" <%= locals.studentDetails.district === "East Godavari" ? "selected" : "" %>>East Godavari</option>
+                <option value="Guntur" <%= locals.studentDetails.district === "Guntur" ? "selected" : "" %>>Guntur</option>
+                <option value="Krishna" <%= locals.studentDetails.district === "Krishna" ? "selected" : "" %>>Krishna</option>
+                <option value="Kurnool" <%= locals.studentDetails.district === "Kurnool" ? "selected" : "" %>>Kurnool</option>
+                <option value="Prakasam" <%= locals.studentDetails.district === "Prakasam" ? "selected" : "" %>>Prakasam</option>
+                <option value="Sri Potti Sriramulu Nellore" <%= locals.studentDetails.district === "Sri Potti Sriramulu Nellore" ? "selected" : "" %>>Sri Potti Sriramulu Nellore</option>
+                <option value="Srikakulam" <%= locals.studentDetails.district === "Srikakulam" ? "selected" : "" %>>Srikakulam</option>
+                <option value="Visakhapatnam" <%= locals.studentDetails.district === "Visakhapatnam" ? "selected" : "" %>>Visakhapatnam</option>
+                <option value="Vizianagaram" <%= locals.studentDetails.district === "Vizianagaram" ? "selected" : "" %>>Vizianagaram</option>
+                <option value="West Godavari" <%= locals.studentDetails.district === "West Godavari" ? "selected" : "" %>>West Godavari</option>
+                <option value="YSR Kadapa" <%= locals.studentDetails.district === "YSR Kadapa" ? "selected" : "" %>>YSR Kadapa</option>
+                <option value="Anjaw" <%= locals.studentDetails.district === "Anjaw" ? "selected" : "" %>>Anjaw</option>
+                <option value="Changlang" <%= locals.studentDetails.district === "Changlang" ? "selected" : "" %>>Changlang</option>
+                <option value="Dibang Valley" <%= locals.studentDetails.district === "Dibang Valley" ? "selected" : "" %>>Dibang Valley</option>
+                <option value="East Kameng" <%= locals.studentDetails.district === "East Kameng" ? "selected" : "" %>>East Kameng</option>
+                <option value="East Siang" <%= locals.studentDetails.district === "East Siang" ? "selected" : "" %>>East Siang</option>
+                <option value="Kamle" <%= locals.studentDetails.district === "Kamle" ? "selected" : "" %>>Kamle</option>
+                <option value="Kra Daadi" <%= locals.studentDetails.district === "Kra Daadi" ? "selected" : "" %>>Kra Daadi</option>
+                <option value="Kurung Kumey" <%= locals.studentDetails.district === "Kurung Kumey" ? "selected" : "" %>>Kurung Kumey</option>
+                <option value="Lepa Rada" <%= locals.studentDetails.district === "Lepa Rada" ? "selected" : "" %>>Lepa Rada</option>
+                <option value="Lohit" <%= locals.studentDetails.district === "Lohit" ? "selected" : "" %>>Lohit</option>
+                <option value="Lower Dibang Valley" <%= locals.studentDetails.district === "Lower Dibang Valley" ? "selected" : "" %>>Lower Dibang Valley</option>
+                <option value="Lower Siang" <%= locals.studentDetails.district === "Lower Siang" ? "selected" : "" %>>Lower Siang</option>
+                <option value="Lower Subansiri" <%= locals.studentDetails.district === "Lower Subansiri" ? "selected" : "" %>>Lower Subansiri</option>
+                <option value="Namsai" <%= locals.studentDetails.district === "Namsai" ? "selected" : "" %>>Namsai</option>
+                <option value="Papum Pare" <%= locals.studentDetails.district === "Papum Pare" ? "selected" : "" %>>Papum Pare</option>
+                <option value="Tawang" <%= locals.studentDetails.district === "Tawang" ? "selected" : "" %>>Tawang</option>
+                <option value="Tirap" <%= locals.studentDetails.district === "Tirap" ? "selected" : "" %>>Tirap</option>
+                <option value="Upper Siang" <%= locals.studentDetails.district === "Upper Siang" ? "selected" : "" %>>Upper Siang</option>
+                <option value="Upper Subansiri" <%= locals.studentDetails.district === "Upper Subansiri" ? "selected" : "" %>>Upper Subansiri</option>
+                <option value="West Kameng" <%= locals.studentDetails.district === "West Kameng" ? "selected" : "" %>>West Kameng</option>
+                <option value="West Siang" <%= locals.studentDetails.district === "West Siang" ? "selected" : "" %>>West Siang</option>
+                <option value="Baksa" <%= locals.studentDetails.district === "Baksa" ? "selected" : "" %>>Baksa</option>
+                <option value="Barpeta" <%= locals.studentDetails.district === "Barpeta" ? "selected" : "" %>>Barpeta</option>
+                <option value="Biswanath" <%= locals.studentDetails.district === "Biswanath" ? "selected" : "" %>>Biswanath</option>
+                <option value="Bongaigaon" <%= locals.studentDetails.district === "Bongaigaon" ? "selected" : "" %>>Bongaigaon</option>
+                <option value="Cachar" <%= locals.studentDetails.district === "Cachar" ? "selected" : "" %>>Cachar</option>
+                <option value="Darrang" <%= locals.studentDetails.district === "Darrang" ? "selected" : "" %>>Darrang</option>
+                <option value="Goalpara" <%= locals.studentDetails.district === "Goalpara" ? "selected" : "" %>>Goalpara</option>
+                <option value="Jorhat" <%= locals.studentDetails.district === "Jorhat" ? "selected" : "" %>>Jorhat</option>
+                <option value="Kamrup" <%= locals.studentDetails.district === "Kamrup" ? "selected" : "" %>>Kamrup</option>
+                <option value="Sonitpur" <%= locals.studentDetails.district === "Sonitpur" ? "selected" : "" %>>Sonitpur</option>
+                <option value="Tinsukia" <%= locals.studentDetails.district === "Tinsukia" ? "selected" : "" %>>Tinsukia</option>
+            </select>
+            
+            
+            
+        </div>
+
+      
+
+        <div class="form-group">
+            <label>Department *</label>
+            <select name="department" <%-locals.disabledStatus %>>
+                <option value="" <%= !locals.studentDetails.department === "" ? "selected" : "" %>>Select an option</option>
+                <option value="Adarsh Vijendra Institute of Pharmaceutical Sciences" <%= locals.studentDetails.department === "Adarsh Vijendra Institute of Pharmaceutical Sciences" ? "selected" : "" %>>Adarsh Vijendra Institute of Pharmaceutical Sciences</option>
+                <option value="DEPARTMENT OF CIVIL ENGINEERING" <%= locals.studentDetails.department === "DEPARTMENT OF CIVIL ENGINEERING" ? "selected" : "" %>>DEPARTMENT OF CIVIL ENGINEERING</option>
+                <option value="Department of Computer Science and Engineering" <%= locals.studentDetails.department === "Department of Computer Science and Engineering" ? "selected" : "" %>>Department of Computer Science and Engineering</option>
+                <option value="Department of Electronics and Electrical Engineering" <%= locals.studentDetails.department === "Department of Electronics and Electrical Engineering" ? "selected" : "" %>>Department of Electronics and Electrical Engineering</option>
+                <option value="Department of Mechanical Engineering" <%= locals.studentDetails.department === "Department of Mechanical Engineering" ? "selected" : "" %>>Department of Mechanical Engineering</option>
+                <option value="Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center" <%= locals.studentDetails.department === "Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center" ? "selected" : "" %>>Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center</option>
+                <option value="Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences" <%= locals.studentDetails.department === "Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences" ? "selected" : "" %>>Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences</option>
+                <option value="School of Agriculture and Environmental Sciences" <%= locals.studentDetails.department === "School of Agriculture and Environmental Sciences" ? "selected" : "" %>>School of Agriculture and Environmental Sciences</option>
+                <option value="School of Basic and Applied Sciences" <%= locals.studentDetails.department === "School of Basic and Applied Sciences" ? "selected" : "" %>>School of Basic and Applied Sciences</option>
+                <option value="School of Biological Engineering & Science" <%= locals.studentDetails.department === "School of Biological Engineering & Science" ? "selected" : "" %>>School of Biological Engineering & Science</option>
+                <option value="School of Business Studies & Entrepreneurship" <%= locals.studentDetails.department === "School of Business Studies & Entrepreneurship" ? "selected" : "" %>>School of Business Studies & Entrepreneurship</option>
+                <option value="School of Education" <%= locals.studentDetails.department === "School of Education" ? "selected" : "" %>>School of Education</option>
+                <option value="School of Law And Constitutional Studies" <%= locals.studentDetails.department === "School of Law And Constitutional Studies" ? "selected" : "" %>>School of Law And Constitutional Studies</option>
+                <option value="School of Liberal Arts & Languages" <%= locals.studentDetails.department === "School of Liberal Arts & Languages" ? "selected" : "" %>>School of Liberal Arts & Languages</option>
+            </select>
+            
+        </div>
+
+
+        <div class="form-group">
+            <label>Programme *</label>
+            <select name="programme" <%-locals.disabledStatus %>>
+                <option value="" <%=!locals.studentDetails.programme === "" ? 'selected' : '' %>>Select Programme</option>
+                <option value="B.Sc. in Electronics" <%=locals.studentDetails.programme === "B.Sc. in Electronics" ? 'selected' : '' %>>B.Sc. in Electronics</option>
+                <option value="B.Tech. in Electrical Engineering" <%=locals.studentDetails.programme === "B.Tech. in Electrical Engineering" ? 'selected' : '' %>>B.Tech. in Electrical Engineering</option>
+                <option value="B.Tech. in Electronics & Communication Engineering" <%= locals.studentDetails.programme === "B.Tech. in Electronics & Communication Engineering" ? 'selected' : '' %>>B.Tech. in Electronics & Communication Engineering</option>
+                <option value="Bachelor of Arts (General)" <%= locals.studentDetails.programme === "Bachelor of Arts (General)" ? 'selected' : '' %>>Bachelor of Arts (General)</option>
+                <option value="Bachelor of Arts and Bachelor of Law" <%= locals.studentDetails.programme === "Bachelor of Arts and Bachelor of Law" ? 'selected' : '' %>>Bachelor of Arts and Bachelor of Law</option>
+                <option value="Bachelor of Arts in Yoga" <%= locals.studentDetails.programme === "Bachelor of Arts in Yoga" ? 'selected' : '' %>>Bachelor of Arts in Yoga</option>
+                <option value="Bachelor of Ayurvedic Medicine and Surgery" <%= locals.studentDetails.programme === "Bachelor of Ayurvedic Medicine and Surgery" ? 'selected' : '' %>>Bachelor of Ayurvedic Medicine and Surgery</option>
+                <option value="Bachelor of Business Administration" <%= locals.studentDetails.programme === "Bachelor of Business Administration" ? 'selected' : '' %>>Bachelor of Business Administration</option>
+                <option value="Bachelor of Commerce (Honours)" <%= locals.studentDetails.programme === "Bachelor of Commerce (Honours)" ? 'selected' : '' %>>Bachelor of Commerce (Honours)</option>
+                <option value="Bachelor of Computer Applications" <%= locals.studentDetails.programme === "Bachelor of Computer Applications" ? 'selected' : '' %>>Bachelor of Computer Applications</option>
+                <option value="Bachelor of Education" <%= locals.studentDetails.programme === "Bachelor of Education" ? 'selected' : '' %>>Bachelor of Education</option>
+                <option value="Bachelor of Laws" <%= locals.studentDetails.programme === "Bachelor of Laws" ? 'selected' : '' %>>Bachelor of Laws</option>
+                <option value="Bachelor of Naturopathy and Yogic Sciences" <%= locals.studentDetails.programme === "Bachelor of Naturopathy and Yogic Sciences" ? 'selected' : '' %>>Bachelor of Naturopathy and Yogic Sciences</option>
+                <option value="Bachelor of Pharmacy" <%= locals.studentDetails.programme === "Bachelor of Pharmacy" ? 'selected' : '' %>>Bachelor of Pharmacy</option>
+                <option value="Bachelor of Science - Biomedical Science" <%= locals.studentDetails.programme === "Bachelor of Science - Biomedical Science" ? 'selected' : '' %>>Bachelor of Science - Biomedical Science</option>
+                <option value="Bachelor of Science - Biotechnology" <%= locals.studentDetails.programme === "Bachelor of Science - Biotechnology" ? 'selected' : '' %>>Bachelor of Science - Biotechnology</option>
+                <option value="Bachelor of Science - Microbiology" <%= locals.studentDetails.programme === "Bachelor of Science - Microbiology" ? 'selected' : '' %>>Bachelor of Science - Microbiology</option>
+                <option value="Bachelor of Science in Agriculture" <%= locals.studentDetails.programme === "Bachelor of Science in Agriculture" ? 'selected' : '' %>>Bachelor of Science in Agriculture</option>
+                <option value="Bachelor of Science in Computer Science" <%= locals.studentDetails.programme === "Bachelor of Science in Computer Science" ? 'selected' : '' %>>Bachelor of Science in Computer Science</option>
+                <option value="Bachelor of Science-(PCM)" <%= locals.studentDetails.programme === "Bachelor of Science-(PCM)" ? 'selected' : '' %>>Bachelor of Science-(PCM)</option>
+                <option value="Bachelor of Technology Civil Engineering" <%= locals.studentDetails.programme === "Bachelor of Technology Civil Engineering" ? 'selected' : '' %>>Bachelor of Technology Civil Engineering</option>
+                <option value="Bachelor of Technology in Basic and Applied Sciences" <%= locals.studentDetails.programme === "Bachelor of Technology in Basic and Applied Sciences" ? 'selected' : '' %>>Bachelor of Technology in Basic and Applied Sciences</option>
+                <option value="Bachelor of Technology in Computer Science and Engineering" <%= locals.studentDetails.programme === "Bachelor of Technology in Computer Science and Engineering" ? 'selected' : '' %>>Bachelor of Technology in Computer Science and Engineering</option>
+                <option value="Bachelor of Technology in Mechanical Engineering" <%= locals.studentDetails.programme === "Bachelor of Technology in Mechanical Engineering" ? 'selected' : '' %>>Bachelor of Technology in Mechanical Engineering</option>
+                <option value="Diploma in Civil Engineering" <%= locals.studentDetails.programme === "Diploma in Civil Engineering" ? 'selected' : '' %>>Diploma in Civil Engineering</option>
+                <option value="Diploma in Computer Science and Engineering" <%= locals.studentDetails.programme === "Diploma in Computer Science and Engineering" ? 'selected' : '' %>>Diploma in Computer Science and Engineering</option>
+                <option value="Diploma in Electrical Engineering" <%= locals.studentDetails.programme === "Diploma in Electrical Engineering" ? 'selected' : '' %>>Diploma in Electrical Engineering</option>
+                <option value="Diploma in Electronics and Communication Engineering" <%= locals.studentDetails.programme === "Diploma in Electronics and Communication Engineering" ? 'selected' : '' %>>Diploma in Electronics and Communication Engineering</option>
+                <option value="Diploma in Elementary Education" <%= locals.studentDetails.programme === "Diploma in Elementary Education" ? 'selected' : '' %>>Diploma in Elementary Education</option>
+                <option value="Diploma in Engineering in Basic and Applied Sciences" <%= locals.studentDetails.programme === "Diploma in Engineering in Basic and Applied Sciences" ? 'selected' : '' %>>Diploma in Engineering in Basic and Applied Sciences</option>
+                <option value="Diploma in Mechanical Engineering" <%= locals.studentDetails.programme === "Diploma in Mechanical Engineering" ? 'selected' : '' %>>Diploma in Mechanical Engineering</option>
+                <option value="Diploma in Pharmacy" <%= locals.studentDetails.programme === "Diploma in Pharmacy" ? 'selected' : '' %>>Diploma in Pharmacy</option>
+                <option value="Doctor of Philosophy in Electrical" <%= locals.studentDetails.programme === "Doctor of Philosophy in Electrical" ? 'selected' : '' %>>Doctor of Philosophy in Electrical</option>
+                <option value="Doctor of Philosophy in Electronics" <%= locals.studentDetails.programme === "Doctor of Philosophy in Electronics" ? 'selected' : '' %>>Doctor of Philosophy in Electronics</option>
+                <option value="Doctor of Philosophy in Law" <%= locals.studentDetails.programme === "Doctor of Philosophy in Law" ? 'selected' : '' %>>Doctor of Philosophy in Law</option>
+                <option value="Doctor of Philosophy in Management" <%= locals.studentDetails.programme === "Doctor of Philosophy in Management" ? 'selected' : '' %>>Doctor of Philosophy in Management</option>
+                <option value="Doctor of Philosophy in Pharmacy" <%= locals.studentDetails.programme === "Doctor of Philosophy in Pharmacy" ? 'selected' : '' %>>Doctor of Philosophy in Pharmacy</option>
+                <option value="M.Sc. in Electronics" <%= locals.studentDetails.programme === "M.Sc. in Electronics" ? 'selected' : '' %>>M.Sc. in Electronics</option>
+                <option value="M.Tech. in Communication Engineering" <%= locals.studentDetails.programme === "M.Tech. in Communication Engineering" ? 'selected' : '' %>>M.Tech. in Communication Engineering</option>
+                <option value="Master of Arts (Education)" <%= locals.studentDetails.programme === "Master of Arts (Education)" ? 'selected' : '' %>>Master of Arts (Education)</option>
+                <option value="Master of Arts (English)" <%= locals.studentDetails.programme === "Master of Arts (English)" ? 'selected' : '' %>>Master of Arts (English)</option>
+                <option value="Master of Arts (Hindi)" <%= locals.studentDetails.programme === "Master of Arts (Hindi)" ? 'selected' : '' %>>Master of Arts (Hindi)</option>
+                <option value="Master of Arts (Political Science)" <%= locals.studentDetails.programme === "Master of Arts (Political Science)" ? 'selected' : '' %>>Master of Arts (Political Science)</option>
+                <option value="Master of Arts in Applied Yoga & Health" <%= locals.studentDetails.programme === "Master of Arts in Applied Yoga & Health" ? 'selected' : '' %>>Master of Arts in Applied Yoga & Health</option>
+                <option value="Master of Business Administration" <%= locals.studentDetails.programme === "Master of Business Administration" ? 'selected' : '' %>>Master of Business Administration</option>
+                <option value="Master of Commerce" <%= locals.studentDetails.programme === "Master of Commerce" ? 'selected' : '' %>>Master of Commerce</option>
+                <option value="Master of Computer Applications" <%= locals.studentDetails.programme === "Master of Computer Applications" ? 'selected' : '' %>>Master of Computer Applications</option>
+                <option value="Master of Laws" <%= locals.studentDetails.programme === "Master of Laws" ? 'selected' : '' %>>Master of Laws</option>
+                <option value="Master of Pharmacy in Pharmaceutical Chemistry" <%= locals.studentDetails.programme === "Master of Pharmacy in Pharmaceutical Chemistry" ? 'selected' : '' %>>Master of Pharmacy in Pharmaceutical Chemistry</option>
+                <option value="Master of Pharmacy in Pharmaceutics" <%= locals.studentDetails.programme === "Master of Pharmacy in Pharmaceutics" ? 'selected' : '' %>>Master of Pharmacy in Pharmaceutics</option>
+                <option value="Master of Pharmacy in Pharmacology" <%= locals.studentDetails.programme === "Master of Pharmacy in Pharmacology" ? 'selected' : '' %>>Master of Pharmacy in Pharmacology</option>
+                <option value="Master of Philosophy" <%= locals.studentDetails.programme === "Master of Philosophy" ? 'selected' : '' %>>Master of Philosophy</option>
+                <option value="Master of Science - Biomedical Science" <%= locals.studentDetails.programme === "Master of Science - Biomedical Science" ? 'selected' : '' %>>Master of Science - Biomedical Science</option>
+                <option value="Master of Science - Biotechnology" <%= locals.studentDetails.programme === "Master of Science - Biotechnology" ? 'selected' : '' %>>Master of Science - Biotechnology</option>
+                <option value="Master of Science - Chemistry" <%= locals.studentDetails.programme === "Master of Science - Chemistry" ? 'selected' : '' %>>Master of Science - Chemistry</option>
+                <option value="Master of Science - Mathematics" <%= locals.studentDetails.programme === "Master of Science - Mathematics" ? 'selected' : '' %>>Master of Science - Mathematics</option>
+                <option value="Master of Science - Microbiology" <%= locals.studentDetails.programme === "Master of Science - Microbiology" ? 'selected' : '' %>>Master of Science - Microbiology</option>
+                <option value="Master of Science - Physics" <%= locals.studentDetails.programme === "Master of Science - Physics" ? 'selected' : '' %>>Master of Science - Physics</option>
+                <option value="Master of Science in Agronomy" <%= locals.studentDetails.programme === "Master of Science in Agronomy" ? 'selected' : '' %>>Master of Science in Agronomy</option>
+                <option value="Master of Science in Horticulture" <%= locals.studentDetails.programme === "Master of Science in Horticulture" ? 'selected' : '' %>>Master of Science in Horticulture</option>
+                <option value="Master of Technology - CAD/CAM" <%= locals.studentDetails.programme === "Master of Technology - CAD/CAM" ? 'selected' : '' %>>Master of Technology - CAD/CAM</option>
+              </select>
+              
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Admission Type *</label>
+            <select name="admissionType" <%-locals.disabledStatus %>>
+                <option value="" <%= locals.studentDetails.admissionType === "" ? 'selected' : '' %>>Select</option>
+                <option value="Regular" <%=(locals.studentDetails.admissionType === "Regular") ? 'selected' : '' %>>Regular</option>
+                <option value="Private" <%=(locals.studentDetails.admissionType === "Private") ? 'selected' : '' %>>Private</option>
+            </select>
+            
+        </div>
+
+
+        <div class="form-group">
+            <label>Hostel Required *</label>
+            <select name="hostelRequired" <%-locals.disabledStatus %>>
+                <option value="" <%=(locals.studentDetails.hostelRequired === "") ? 'selected' : '' %>>Select</option>
+                <option value="YES" <%=(locals.studentDetails.hostelRequired === "YES") ? 'selected' : '' %>>YES</option>
+                <option value="NO" <%=(locals.studentDetails.hostelRequired === "NO") ? 'selected' : '' %>>NO</option>
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label>Transportation Required *</label>
+            <select name="transportationRequired" <%-locals.disabledStatus %>>
+                <option value="" <%=(locals.studentDetails.transportationRequired === "") ? 'selected' : '' %>>Select</option>
+                <option value="YES" <%=(locals.studentDetails.transportationRequired === "YES") ? 'selected' : '' %>>YES</option>
+                <option value="NO" <%=(locals.studentDetails.transportationRequired === "NO") ? 'selected' : '' %>>NO</option>
+            </select>
+            
+        </div>
+
+        
+
+
+
+        
+
+        <div class="form-group">
+            <label>Gender *</label>
+            <select name="gender" <%-locals.disabledStatus %>>
+                <option value="" <%=(locals.studentDetails.gender === "") ? 'selected' : '' %>>Select</option>
+                <option value="MALE" <%=(locals.studentDetails.gender === "MALE") ? 'selected' : '' %>>MALE</option>
+                <option value="Female" <%=(locals.studentDetails.gender === "Female") ? 'selected' : '' %>>Female</option>
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" name="firstName" value="<%=locals.studentDetails.firstName %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" name="middleName" value="<%=locals.studentDetails.middleName %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name*</label>
+            <input type="text" name="lastName" value="<%=locals.studentDetails.lastName %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" value="<%=locals.studentDetails.email %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="text" value="<%=locals.studentDetails.mobileNumber %>" name="mobileNumber" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth *</label>
+            <input type="date" name="dob" value="<%=locals.studentDetails.dob %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Aadhar No *</label>
+            <input type="text" name="aadharNumber" value="<%=locals.studentDetails.aadharNumber %>" <%-locals.disabledStatus %>>
+        </div>
+
+    
+
+        <div class="form-group">
+            <label>Address 1 *</label>
+            <input type="text" name="address" value="<%=locals.studentDetails.address %>"  <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Pin Code *</label>
+            <input type="text" name="pincode" value="<%=locals.studentDetails.pincode %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <h3>Parent Details</h3>
+
+        <div class="form-group">
+            <label>Father's Occupation *</label>
+            <input type="text" name="fatherOccupation" value="<%=locals.studentDetails.fatherOccupation %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Father's Name *</label>
+            <input type="text" name="fatherName" value="<%=locals.studentDetails.fatherName %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Gurdian Mobile Number *</label>
+            <input type="text" name="gurdianMobileNumber" value="<%=locals.studentDetails.gurdianMobileNumber %>" <%-locals.disabledStatus %> >
+        </div>
+
+        <div class="form-group">
+            <label>Mother's Name *</label>
+            <input type="text" name="motherName" value="<%=locals.studentDetails.motherName %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <h3>Education Details</h3>
+
+        <div class="form-group">
+            <label>12 Stream *</label>
+            <select name="twelfthStream" <%-locals.disabledStatus %>>
+                <option value="" <%=(locals.studentDetails.twelfthStream === "") ? 'selected' : '' %>>Select a slot</option>
+                <option value="Commerce" <%=(locals.studentDetails.twelfthStream === "Commerce") ? 'selected' : '' %>>Commerce</option>
+                <option value="Arts" <%=(locals.studentDetails.twelfthStream === "Arts") ? 'selected' : '' %>>Arts</option>
+                <option value="Science" <%=(locals.studentDetails.twelfthStream === "Science") ? 'selected' : '' %>>Science</option>
+                <option value="Engineering" <%=(locals.studentDetails.twelfthStream === "Engineering") ? 'selected' : '' %>>Engineering</option>
+                <option value="Other" <%=(locals.studentDetails.twelfthStream === "Other") ? 'selected' : '' %>>Other</option>
+                <option value="Agriculture" <%=(locals.studentDetails.twelfthStream === "Agriculture") ? 'selected' : '' %>>Agriculture</option>
+                <option value="PCB" <%=(locals.studentDetails.twelfthStream === "PCB") ? 'selected' : '' %>>PCB</option>
+                <option value="PCM" <%=(locals.studentDetails.twelfthStream === "PCM") ? 'selected' : '' %>>PCM</option>
+            </select>
+            
+        </div>
+
+    
+
+        <div class="form-group">
+            <label>10th Marks/Grade *</label>
+            <input type="text" name="tenthGrade" value="<%=locals.studentDetails.tenthGrade %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>10th Passing Year *</label>
+            <input type="text" name="tenthPassingYear" value="<%=locals.studentDetails.tenthPassingYear %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>10th Board *</label>
+            <input type="text" name="tenthBoard" value="<%=locals.studentDetails.tenthBoard %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>12th Marks/Grade *</label>
+            <input type="text" name="twelfthGrade" value="<%=locals.studentDetails.twelfthGrade %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>12th Passing Year *</label>
+            <input type="text" name="twelfthPassingYear" value="<%=locals.studentDetails.twelfthPassingYear %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>12th Board *</label>
+            <input type="text" name="twelfthBoard" value="<%=locals.studentDetails.twelfthBoard %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Graduation Marks/Grade *</label>
+            <input type="text" name="graduationGrade" value="<%=locals.studentDetails.graduationGrade %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Graduation Passing Year *</label>
+            <input type="text" name="graduationPassingYear" value="<%=locals.studentDetails.graduationPassingYear %>" <%-locals.disabledStatus %>>
+        </div>
+
+        <div class="form-group">
+            <label>Graduation University *</label>
+            <input type="text" name="graduationUniversity" value="<%=locals.studentDetails.graduationUniversity %>" <%-locals.disabledStatus %>>
+        </div>
+
+       <% if(locals.studentDetails.isAddmissionFormFilled) {%>
+ 
+        <% }else{ %>
+            <button type="submit">Submit</button>
+       <% } %>
+    </form>

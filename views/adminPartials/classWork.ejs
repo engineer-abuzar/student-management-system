@@ -1,0 +1,214 @@
+<style>
+            .dropdown-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #5e46b4;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #3e2a8c;
+            box-shadow: 0 0 5px rgba(94, 70, 180, 0.5);
+        }
+    
+    .tabs-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        color: #666;
+        border-bottom: 3px solid transparent;
+        transition: 0.3s;
+    }
+
+    .tab.active {
+        color: #5e46b4;
+        border-bottom: 3px solid #5e46b4;
+    }
+
+    .content-container {
+      
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        margin: auto;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="course-option" style="display: flex
+;
+    align-items: center;
+    width: 100%;
+    justify-content: center;">
+    <div class="dropdown-container" >
+        <label for="course">Course</label>
+        <select id="course" name="course" required>
+            <option value="">Select Course</option>
+            <option value="CS101">Data Structures</option>
+            <option value="CS102">Algorithms</option>
+            <option value="CS103">Operating System</option>
+            <option value="CS104">Database Management System</option>
+            <option value="CS105">Computer Networks</option>
+            <option value="CS106">Software Engineering</option>
+            <option value="CS107">Artificial Intelligence</option>
+            <option value="CS108">Machine Learning</option>
+            <option value="CS109">Cyber Security</option>
+            <option value="CS110">Cloud Computing</option>
+            <option value="CS111">Big Data Analytics</option>
+            <option value="CS112">Computer Graphics</option>
+            <option value="CS113">Internet of Things</option>
+            <option value="CS114">Blockchain Technology</option>
+            <option value="CS115">Compiler Design</option>
+            <option value="CS116">Theory of Computation</option>
+        </select>
+        <input type="submit" style="margin-top: 15px; cursor: pointer;" id="show-work" >
+    </div>
+    
+</div>
+
+<script> 
+let courseValue=''
+let resourceHTML;
+    const courseOption=document.getElementsByClassName('course-option')[0]
+    const showWork=document.getElementById('show-work')
+    showWork.addEventListener('click',()=>{
+        courseValue=document.getElementById('course').value
+
+        courseOption.remove()
+        const partialsContainer=document.getElementsByClassName('partials-container')[0]
+        let div=document.createElement('div')
+        div.style.width='100%'
+        div.style.marginTop='20px'
+        div.style.overflow='auto'
+        div.classList.add('classroom-container')
+fetch(`/api/user/getResourse?courseCode=${courseValue}`)
+.then(response=>response.json())
+.then((resources)=>{
+ 
+resources.data.forEach(resource => {
+    document.getElementById('course-work').innerHTML+= `
+    <div class="resource-card">
+        <div class="resource-info">
+            <h3>${resource.fileName}</h3>
+            <button style="width: 15%;" onclick="viewPdf('${resource.fileName}', '${resource.resourceFile}')">View PDF</button>
+            <button style="width: 15%;" onclick="downloadPdf('${resource.fileName}', '${resource.resourceFile}')">Download</button>
+        </div>
+    </div>`;
+})
+}).catch(error=>console.log(error))
+
+        div.innerHTML=`
+
+    <div class="tabs-container">
+        <div class="tab active" onclick="changeTab('courseWork', this)">Course Work</div>
+    <!-- <div class="tab" onclick="changeTab('resources', this)">Resources</div>
+        // <div class="tab" onclick="changeTab('quizzes', this)">Quizzes</div>
+        // <div class="tab" onclick="changeTab('assignments', this)">Assignments</div>
+        // <div class="tab" onclick="changeTab('assessmentResults', this)">Assessment Results</div>-->
+    </div>
+    
+    <div class="content-container" id="content">
+     <div id='course-work'>    </div>
+    
+        <form action="/api/admin/uploadRecources" method="post" style=" height: auto;" class="content-container" enctype="multipart/form-data">
+            <h2>Upload Recourses</h2>
+            <input name="resource" type="file" required />
+       <input type='hidden' name='course' value='${courseValue}'/>
+            <input type="submit" style="width: fit-content; cursor: pointer; "/>
+    
+        </form>
+   
+</div>`
+
+partialsContainer.appendChild(div)
+    })
+
+
+</script>
+
+
+    <script>
+    const subjects = document.querySelectorAll('.subject');
+    
+    subjects.forEach(subject => {
+        const subjectTitle = subject.querySelector('h3'); // Select the h3 inside each subject
+        subject.addEventListener('click', () => {
+            alert('Subject ID: ' + subjectTitle.id); // Display h3's ID
+            const subjectDetails=document.getElementById('classroom-container')
+        subjectDetails.innerHTML=`
+        `
+    
+    
+        });
+       
+    });
+    
+    
+    </script>
+    
+<!--     
+    
+    <script>
+        function changeTab(tabName, element) {
+            
+            // Tab content mapping
+            const tabContent = {
+                courseWork: `<h2>Course Work</h2><p>Details about the course materials and syllabus.</p>
+                 <form action="/api/admin/uploadRecources" method="post" style=" height: auto;" class="content-container" enctype="multipart/form-data">
+        <h2>Upload Recourses</h2>
+        <input name="resource" type="file" required />
+   
+        <input type="submit" style="width: fit-content; cursor: pointer; ">
+
+    </form>`,
+                resources: "<h2>Resources</h2><p>Important reference books, notes, and links.</p>",
+                quizzes: "<h2>Quizzes</h2><p>Upcoming quizzes and past quiz results.</p>",
+                assignments: "<h2>Assignments</h2><p>Current assignments, deadlines, and submissions.</p>",
+                assessmentResults: "<h2>Assessment Results</h2><p>View your grades and performance reports.</p>"
+            };
+    
+            // Update content
+            document.getElementById("content").innerHTML = tabContent[tabName];
+    
+            // Update active tab styling
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            element.classList.add("active");
+        }
+    </script> -->
+
+   

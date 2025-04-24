@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mentor-container {
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mentor-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .mentor-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .mentor-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #E74C3C;
+        }
+
+        .mentor-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .mentor-contact {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .contact-btn {
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .contact-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+     <link rel="stylesheet" href="/stylesheets/header.css">
+     <link rel="stylesheet" href="/stylesheets/sidebar.css">
+
+     <script src="/javascript/statusMessage.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <%- include('partials/sidebar') %>
+<div class="mentor-container">
+    <h2 style="text-align: center; color: #E74C3C;">Mentor List</h2>
+
+    <div class="mentor-card">
+        <div class="mentor-info">
+            <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+            <div>
+                <div class="mentor-name">Dr. Amit Sharma</div>
+                <div class="mentor-contact">📞 +91 98765 43210</div>
+            </div>
+        </div>
+        <button class="contact-btn">Contact</button>
+    </div>
+
+    <div class="mentor-card">
+        <div class="mentor-info">
+            <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+            <div>
+                <div class="mentor-name">Prof. Neha Gupta</div>
+                <div class="mentor-contact">📞 +91 87654 32109</div>
+            </div>
+        </div>
+        <button class="contact-btn">Contact</button>
+    </div>
+
+    <div class="mentor-card">
+        <div class="mentor-info">
+            <img src="https://via.placeholder.com/50" class="mentor-img" alt="Mentor">
+            <div>
+                <div class="mentor-name">Dr. Rajesh Kumar</div>
+                <div class="mentor-contact">📞 +91 76543 21098</div>
+            </div>
+        </div>
+        <button class="contact-btn">Contact</button>
+    </div>
+
+</div>
+
+</body>
+</html>

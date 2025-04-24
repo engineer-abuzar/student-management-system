@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
+    <link rel="stylesheet" href="/stylesheets/homepage.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+
+    <script src="/javascript/statusMessage.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+<div class="main-container">
+    
+    <div class="discription">
+       <div class="about-the-university">
+        <h3>Welcome to Shobhit University</h3>
+        <p>Step into a world of knowledge, innovation, and endless opportunities at Shobhit University! Our student-centric approach, cutting-edge curriculum, and vibrant campus life empower you to excel academically and grow personally. Join us and shape a bright future with quality education and holistic development.</p>
+       </div>
+        <div class="about-the-application">
+            <h3>Student Hub</h3>
+<p>Your all-in-one platform for managing student records, tracking academic progress, and streamlining administrative tasks. Stay organized, access student details effortlessly, and enhance the learning experience with ease!</p>
+
+        </div>
+        
+    </div>
+
+    <div class="login-container">
+        <div id="msg"></div>
+        <form class="login-form" action="/api/user/login" method="post">
+            <div class="container-title">Login</div>
+            <div style="display: flex; flex-direction: row;">
+                <input type="radio" id="student" name="role" value="student" required>
+                <label for="student" style="margin-right: 20px;">Student</label>
+            
+                <input type="radio" id="admin" name="role" value="admin">
+                <label for="admin">Admin</label>
+            </div>
+            
+            <div class="form-input">
+                <input type="text" name="username" id="input-username" placeholder="Username/Email" required>
+                <input type="password" name="password" id="input-pass" placeholder="Password" required>
+            </div>
+            <div class="login-button">
+                <button type="submit">Login</button>
+                <button type="reset">Reset</button>
+            </div>
+            <div class="login-footer">
+                <a href="#">Forgot Your Password?</a>
+            </div>
+        </form>   
+        <form class="signup" action="/api/user/enrollment" method="get">
+            <button type="submit">New Registration</button>
+        </form>    
+    </div>
+</div>
+<%- include('partials/footer') %>
+
+
+</body>
+</html>

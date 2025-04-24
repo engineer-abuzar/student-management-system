@@ -1,0 +1,27 @@
+<div class="upload-container">
+    <h2>Upload Required Documents</h2>
+    <form action="/api/user/uploadDocuments" method="POST" enctype="multipart/form-data">
+        <div class="required-documents">
+            <h5>* 10th Marksheet</h5>
+            <h5>* 12th Marksheet</h5>
+            <h5>* Graduation Marksheet</h5>
+            <h5>* Migration Certificate</h5>
+            <h5>* Aadhar Card</h5>
+            <h5>make a pdf and then upload !!!</h5>
+        </div>
+
+        <div id="fileInputs">
+            <fieldset class="file-group">
+                <legend>Upload Pdf File </legend>
+                <input type="file" id="doc5" name="pdfFile" accept="application/pdf" required>
+            </fieldset>
+     
+
+      
+        <button type="submit">Upload</button>
+    </form>
+
+    <% if (locals.uploadStatus) { %>
+        <p class="upload-status"><%= uploadStatus %></p>
+    <% } %>
+</div>

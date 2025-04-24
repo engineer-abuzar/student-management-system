@@ -1,0 +1,80 @@
+.upload-container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 30px auto;
+}
+
+.upload-container h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Required Documents Section */
+.required-documents {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.required-documents h5 {
+    color: #d9534f; /* Red to indicate required */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* File Upload Section */
+.file-group {
+    background: #eef2f7;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.file-group legend {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 16px;
+}
+
+.file-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Upload Status */
+.upload-status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+}

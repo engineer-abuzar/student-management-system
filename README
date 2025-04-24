@@ -1,0 +1,67 @@
+CREATE TABLE student_details (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    -- Personal Details
+    category VARCHAR(50),
+    religion VARCHAR(50),
+    state VARCHAR(50),
+    district VARCHAR(50),
+    country VARCHAR(50),
+    -- Academic Details
+    department VARCHAR(100),
+    programme VARCHAR(100),
+    batchYear varchar(6),
+    admissionType VARCHAR(50),
+   
+    
+    -- Facilities
+    hostelRequired varchar(6),
+    transportationRequired varchar(6),
+    
+    -- Identification
+    profileImage longblob,
+    admissionNumber VARCHAR(50) UNIQUE,
+    enrollmentNumber VARCHAR(50) UNIQUE,
+    rollNumber VARCHAR(50) UNIQUE,
+    
+    -- Student Information
+    gender VARCHAR(10),
+    firstName VARCHAR(50),
+    middleName VARCHAR(50),
+    lastName VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    mobileNumber VARCHAR(15) UNIQUE,
+    dob varchar(15),
+    aadharNumber VARCHAR(20) UNIQUE,
+    address TEXT,
+    pincode VARCHAR(10),
+    
+    -- Parent Details
+    fatherName VARCHAR(100),
+    fatherOccupation VARCHAR(100),
+    gurdianMobileNumber VARCHAR(15),
+    motherName VARCHAR(100),
+    
+    -- Education Details
+    twelfthStream VARCHAR(50),
+ 
+    
+    -- 10th Details
+    tenthGrade VARCHAR(10),
+    tenthPassingYear varchar(6),
+    tenthBoard VARCHAR(100),
+    
+    -- 12th Details
+    twelfthGrade VARCHAR(10),
+    twelfthPassingYear varchar(6),
+    twelfthBoard VARCHAR(100),
+    
+    -- Graduation Details
+    graduationGrade VARCHAR(10),
+    graduationPassingYear varchar(6),
+    graduationUniversity VARCHAR(100),
+    
+    registrationStatus bool,
+    password varchar(20),
+    isAddmissionFormFilled boolean default false
+);

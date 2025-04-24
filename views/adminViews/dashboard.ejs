@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/sidebar.css">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <script src="/javascript/statusMessage.js"></script>
+    
+</head>
+<body>
+
+    <%-include('../adminPartials/header') %>
+
+
+<div class="partials-container">
+   
+<%-include('../adminPartials/sidebar') %>
+
+
+    <div class="manage-student-container">
+        <h2>Student Management</h2>
+        <div class="student-actions">
+            <div class="student-action add">➕ Add Student</div>
+            <div class="student-action edit">✏️ Edit Student</div>
+            <div class="student-action remove">❌ Remove Student</div>
+            <div class="student-action new">📝 Student Registration</div>
+        </div>
+    </div>
+    
+    <style>
+        /* Main container */
+        .manage-student-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        /* Heading */
+        .manage-student-container h2 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+    
+        /* Actions container (Grid Layout) */
+        .student-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+    
+        /* Individual buttons */
+        .student-action {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            text-align: center;
+            color: white;
+        }
+    
+        /* Action colors */
+        .add {
+            background: #28a745;
+        }
+    
+        .edit {
+            background: #ffc107;
+            color: black;
+        }
+    
+        .remove {
+            background: #dc3545;
+        }
+    
+        .new {
+            background: #007bff;
+        }
+    
+        /* Hover effects */
+        .student-action:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+    </style>
+    
+
+
+
+
+
+
+    
+</div>
+  
+
+
+   
+</body>
+</html>
+

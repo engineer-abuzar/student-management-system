@@ -1,0 +1,301 @@
+<div  class="container">
+    <div class="registrationlogo">
+        <img src="/images/logo.png" alt="College Logo">
+    </div>
+    <h2>College Application Form</h2>
+
+    <form id="formContainer" action="/api/user/enrollment" method="POST" enctype="multipart/form-data">
+        <!-- Student Information -->
+        <fieldset>
+            <legend>Student Information</legend>
+            <div class="input-group">
+                <input type="text" name="first_name" placeholder="First Name*" required oninput="inputValidation(this)">
+                <input type="text" name="middle_name" placeholder="Middle Name" oninput="inputValidation(this)">
+                <input type="text" name="last_name" placeholder="Last Name*" required oninput="inputValidation(this)">
+            </div>
+            
+            <script>
+                function inputValidation(input) {
+                    // Remove any non-alphabetic characters (including numbers)
+                    input.value = input.value.replace(/[^a-zA-Z ]/g, '');
+                }
+            </script>
+            
+
+            <div class="input-group">
+                <input type="date" name="dob" value="2000-02-10" required>
+                <input type="email" name="email" placeholder="Email*" id="email" required>
+                <input type="phone" name="phone" placeholder="Phone*" required oninput="phoneValidation(this)">
+                <input type="phone" name="password" placeholder="Password*" required>
+            </div>
+        </fieldset>
+        <script>
+            function phoneValidation(input) {
+                // Remove any non-numeric characters
+                input.value = input.value.replace(/[^0-9]/g, '');
+            }
+        </script>
+        <!-- Address -->
+        <fieldset>
+            <legend >Address</legend>
+            <input id="address" type="text" name="street_address" placeholder="Street Address" required>
+            <div class="input-group">
+                <div class="form-group">
+    
+                    <select name="district" required> <option value="">Select a District</option>
+                        <option value="Nicobar">Nicobar</option>
+                        <option value="North and Middle Andaman">North and Middle Andaman</option>
+                        <option value="South Andaman">South Andaman</option>
+                        <option value="Anantapur">Anantapur</option>
+                        <option value="Chittoor">Chittoor</option>
+                        <option value="East Godavari">East Godavari</option>
+                        <option value="Guntur">Guntur</option>
+                        <option value="Krishna">Krishna</option>
+                        <option value="Kurnool">Kurnool</option>
+                        <option value="Prakasam">Prakasam</option>
+                        <option value="Sri Potti Sriramulu Nellore">Sri Potti Sriramulu Nellore</option>
+                        <option value="Srikakulam">Srikakulam</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                        <option value="Vizianagaram">Vizianagaram</option>
+                        <option value="West Godavari">West Godavari</option>
+                        <option value="YSR Kadapa">YSR Kadapa</option>
+                        <option value="Anjaw">Anjaw</option>
+                        <option value="Changlang">Changlang</option>
+                        <option value="Dibang Valley">Dibang Valley</option>
+                        <option value="East Kameng">East Kameng</option>
+                        <option value="East Siang">East Siang</option>
+                        <option value="Kamle">Kamle</option>
+                        <option value="Kra Daadi">Kra Daadi</option>
+                        <option value="Kurung Kumey">Kurung Kumey</option>
+                        <option value="Lepa Rada">Lepa Rada</option>
+                        <option value="Lohit">Lohit</option>
+                        <option value="Longding">Longding</option>
+                        <option value="Lower Dibang Valley">Lower Dibang Valley</option>
+                        <option value="Lower Siang">Lower Siang</option>
+                        <option value="Lower Subansiri">Lower Subansiri</option>
+                        <option value="Namsai">Namsai</option>
+                        <option value="Pakke Kessang">Pakke Kessang</option>
+                        <option value="Papum Pare">Papum Pare</option>
+                        <option value="Shi Yomi">Shi Yomi</option>
+                        <option value="Siang">Siang</option>
+                        <option value="Tawang">Tawang</option>
+                        <option value="Tirap">Tirap</option>
+                        <option value="Upper Siang">Upper Siang</option>
+                        <option value="Upper Subansiri">Upper Subansiri</option>
+                        <option value="West Kameng">West Kameng</option>
+                        <option value="West Siang">West Siang</option>
+                        <option value="Baksa">Baksa</option>
+                        <option value="Barpeta">Barpeta</option>
+                        <option value="Biswanath">Biswanath</option>
+                        <option value="Bongaigaon">Bongaigaon</option>
+                        <option value="Cachar">Cachar</option>
+                        <option value="Charaideo">Charaideo</option>
+                        <option value="Chirang">Chirang</option>
+                        <option value="Darrang">Darrang</option>
+                        <option value="Dhemaji">Dhemaji</option>
+                        <option value="Dhubri">Dhubri</option>
+                        <option value="Dibrugarh">Dibrugarh</option>
+                        <option value="Dima Hasao">Dima Hasao</option>
+                        <option value="Goalpara">Goalpara</option>
+                        <option value="Golaghat">Golaghat</option>
+                        <option value="Hailakandi">Hailakandi</option>
+                        <option value="Hojai">Hojai</option>
+                        <option value="Jorhat">Jorhat</option>
+                        <option value="Kamrup">Kamrup</option>
+                        <option value="Kamrup Metropolitan">Kamrup Metropolitan</option>
+                        <option value="Karbi Anglong">Karbi Anglong</option>
+                        <option value="Karimganj">Karimganj</option>
+                        <option value="Kokrajhar">Kokrajhar</option>
+                        <option value="Lakhimpur">Lakhimpur</option>
+                        <option value="Majuli">Majuli</option>
+                        <option value="Morigaon">Morigaon</option>
+                        <option value="Nagaon">Nagaon</option>
+                        <option value="Nalbari">Nalbari</option>
+                        <option value="Sivasagar">Sivasagar</option>
+                        <option value="Sonitpur">Sonitpur</option>
+                        <option value="South Salmara-Mankachar">South Salmara-Mankachar</option>
+                        <option value="Tinsukia">Tinsukia</option>
+                        <option value="Udalguri">Udalguri</option>
+                        <option value="West Karbi Anglong">West Karbi Anglong</option>
+                        <option value="saharanpur">Saharanpur</option>
+                        <option value="shamli">shamli</option>
+                        <option value="muzaffarnagar">muzaffarnagar</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+               
+                    <select name="state" required>
+                        <option value="" disabled selected>Select State</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Puducherry">Puducherry</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                       
+                    </select>
+                </div>
+                
+            </div>
+            <div class="input-group">
+                <select name="country" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Japan">Japan</option>
+                    <option value="China">China</option>
+                </select>
+                <input type="text" name="zip" placeholder="ZIP Code" required oninput="zipValidation(this)">
+            </div>
+        </fieldset>
+        <script>
+            function zipValidation(input) {
+                // Remove any non-numeric characters
+                input.value = input.value.replace(/[^0-9]/g, '');
+            }
+        </script>
+
+        <!-- Courses -->
+        <fieldset>
+            <legend>Course and Department</legend>
+            <div class="form-group">
+             
+                <select name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="Adarsh Vijendra Institute of Pharmaceutical Sciences">Adarsh Vijendra Institute of Pharmaceutical Sciences</option>
+                    <option value="DEPARTMENT OF CIVIL ENGINEERING">DEPARTMENT OF CIVIL ENGINEERING</option>
+                    <option value="Department of Computer Science and Engineering">Department of Computer Science and Engineering</option>
+                    <option value="Department of Electronics and Electrical Engineering">Department of Electronics and Electrical Engineering</option>
+                    <option value="Department of Mechanical Engineering">Department of Mechanical Engineering</option>
+                    <option value="Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center">Kunwar Shekhar Vijendra Ayurvedic Medical College & Research Center</option>
+                    <option value="Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences">Kunwar Shekher Vijender Medical College of Naturopathy and Yogic Sciences</option>
+                    <option value="School of Agriculture and Environmental Sciences">School of Agriculture and Environmental Sciences</option>
+                    <option value="School of Basic and Applied Sciences">School of Basic and Applied Sciences</option>
+                    <option value="School of Biological Engineering & Science">School of Biological Engineering & Science</option>
+                    <option value="School of Business Studies & Entrepreneurship">School of Business Studies & Entrepreneurship</option>
+                    <option value="School of Education">School of Education</option>
+                    <option value="School of Law And Constitutional Studies">School of Law And Constitutional Studies</option>
+                    <option value="School of Liberal Arts & Languages">School of Liberal Arts & Languages</option>
+                    
+                
+                </select>
+            </div>
+    
+    
+            <div class="form-group">
+      
+                <select name="programme" required>   <option value="">Select Programme</option>
+                    <option value="B.Sc. in Electronics">B.Sc. in Electronics</option>
+                    <option value="B.Tech. in Electrical Engineering">B.Tech. in Electrical Engineering</option>
+                    <option value="B.Tech. in Electronics & Communication Engineering">B.Tech. in Electronics & Communication Engineering</option>
+                    <option value="Bachelor of Arts (General)">Bachelor of Arts (General)</option>
+                    <option value="Bachelor of Arts and Bachelor of Law">Bachelor of Arts and Bachelor of Law</option>
+                    <option value="Bachelor of Arts in Yoga">Bachelor of Arts in Yoga</option>
+                    <option value="Bachelor of Ayurvedic Medicine and Surgery">Bachelor of Ayurvedic Medicine and Surgery</option>
+                    <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+                    <option value="Bachelor of Commerce (Honours)">Bachelor of Commerce (Honours)</option>
+                    <option value="Bachelor of Computer Applications">Bachelor of Computer Applications</option>
+                    <option value="Bachelor of Education">Bachelor of Education</option>
+                    <option value="Bachelor of Laws">Bachelor of Laws</option>
+                    <option value="Bachelor of Naturopathy and Yogic Sciences">Bachelor of Naturopathy and Yogic Sciences</option>
+                    <option value="Bachelor of Pharmacy">Bachelor of Pharmacy</option>
+                    <option value="Bachelor of Science - Biomedical Science">Bachelor of Science - Biomedical Science</option>
+                    <option value="Bachelor of Science - Biotechnology">Bachelor of Science - Biotechnology</option>
+                    <option value="Bachelor of Science - Microbiology">Bachelor of Science - Microbiology</option>
+                    <option value="Bachelor of Science in Agriculture">Bachelor of Science in Agriculture</option>
+                    <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+                    <option value="Bachelor of Science-(PCM)">Bachelor of Science-(PCM)</option>
+                    <option value="Bachelor of Technology Civil Engineering">Bachelor of Technology Civil Engineering</option>
+                    <option value="Bachelor of Technology in Basic and Applied Sciences">Bachelor of Technology in Basic and Applied Sciences</option>
+                    <option value="Bachelor of Technology in Computer Science and Engineering">Bachelor of Technology in Computer Science and Engineering</option>
+                    <option value="Bachelor of Technology in Mechanical Engineering">Bachelor of Technology in Mechanical Engineering</option>
+                    <option value="Diploma in Civil Engineering">Diploma in Civil Engineering</option>
+                    <option value="Diploma in Computer Science and Engineering">Diploma in Computer Science and Engineering</option>
+                    <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
+                    <option value="Diploma in Electronics and Communication Engineering">Diploma in Electronics and Communication Engineering</option>
+                    <option value="Diploma in Elementary Education">Diploma in Elementary Education</option>
+                    <option value="Diploma in Engineering in Basic and Applied Sciences">Diploma in Engineering in Basic and Applied Sciences</option>
+                    <option value="Diploma in Mechanical Engineering">Diploma in Mechanical Engineering</option>
+                    <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
+                    <option value="Doctor of Philosophy in Electrical">Doctor of Philosophy in Electrical</option>
+                    <option value="Doctor of Philosophy in Electronics">Doctor of Philosophy in Electronics</option>
+                    <option value="Doctor of Philosophy in Law">Doctor of Philosophy in Law</option>
+                    <option value="Doctor of Philosophy in Management">Doctor of Philosophy in Management</option>
+                    <option value="Doctor of Philosophy in Pharmacy">Doctor of Philosophy in Pharmacy</option>
+                    <option value="M.Sc. in Electronics">M.Sc. in Electronics</option>
+                    <option value="M.Tech. in Communication Engineering">M.Tech. in Communication Engineering</option>
+                    <option value="Master of Arts (Education)">Master of Arts (Education)</option>
+                    <option value="Master of Arts (English)">Master of Arts (English)</option>
+                    <option value="Master of Arts (Hindi)">Master of Arts (Hindi)</option>
+                    <option value="Master of Arts (Political Science)">Master of Arts (Political Science)</option>
+                    <option value="Master of Arts in Applied Yoga & Health">Master of Arts in Applied Yoga & Health</option>
+                    <option value="Master of Business Administration">Master of Business Administration</option>
+                    <option value="Master of Commerce">Master of Commerce</option>
+                    <option value="Master of Computer Applications">Master of Computer Applications</option>
+                    <option value="Master of Laws">Master of Laws</option>
+                    <option value="Master of Pharmacy in Pharmaceutical Chemistry">Master of Pharmacy in Pharmaceutical Chemistry</option>
+                    <option value="Master of Pharmacy in Pharmaceutics">Master of Pharmacy in Pharmaceutics</option>
+                    <option value="Master of Pharmacy in Pharmacology">Master of Pharmacy in Pharmacology</option>
+                    <option value="Master of Philosophy">Master of Philosophy</option>
+                    <option value="Master of Science - Biomedical Science">Master of Science - Biomedical Science</option>
+                    <option value="Master of Science - Biotechnology">Master of Science - Biotechnology</option>
+                    <option value="Master of Science - Chemistry">Master of Science - Chemistry</option>
+                    <option value="Master of Science - Mathematics">Master of Science - Mathematics</option>
+                    <option value="Master of Science - Microbiology">Master of Science - Microbiology</option>
+                    <option value="Master of Science - Physics">Master of Science - Physics</option>
+                    <option value="Master of Science in Agronomy">Master of Science in Agronomy</option>
+                    <option value="Master of Science in Horticulture">Master of Science in Horticulture</option>
+                    <option value="Master of Technology - CAD/CAM">Master of Technology - CAD/CAM</option>
+                    </select>
+            </div>
+    
+        </fieldset>
+
+       <fieldset>
+        <legend>Upload Profile Photo</legend>
+        <div class="form-group">
+            <input name="profilePicture" type="file" placeholder="Upload your Photo" required>
+        </div>
+       
+        
+       </fieldset>
+
+        <!-- Submit Button -->
+        <button id="otpSendButton" type="submit" class="submit-btn">SEND OTP</button>
+    </form>
+</div>

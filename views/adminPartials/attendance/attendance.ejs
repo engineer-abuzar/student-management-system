@@ -1,0 +1,259 @@
+
+<form method="post" action="/api/admin/markAttendance" class="container">
+ <div class="attendance-container">
+    <fieldset>
+        <legend>Mark Attendance</legend>
+
+        <label for="programme">Programme</label>
+        <select id="programme" name="programme">
+            <option value="B.Sc. in Electronics">B.Sc. in Electronics</option>
+            <option value="B.Tech. in Electrical Engineering">B.Tech. in Electrical Engineering</option>
+            <option value="B.Tech. in Electronics & Communication Engineering">B.Tech. in Electronics & Communication Engineering</option>
+            <option value="Bachelor of Arts (General)">Bachelor of Arts (General)</option>
+            <option value="Bachelor of Arts and Bachelor of Law">Bachelor of Arts and Bachelor of Law</option>
+            <option value="Bachelor of Arts in Yoga">Bachelor of Arts in Yoga</option>
+            <option value="Bachelor of Ayurvedic Medicine and Surgery">Bachelor of Ayurvedic Medicine and Surgery</option>
+            <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+            <option value="Bachelor of Commerce (Honours)">Bachelor of Commerce (Honours)</option>
+            <option value="Bachelor of Computer Applications">Bachelor of Computer Applications</option>
+            <option value="Bachelor of Education">Bachelor of Education</option>
+            <option value="Bachelor of Laws">Bachelor of Laws</option>
+            <option value="Bachelor of Naturopathy and Yogic Sciences">Bachelor of Naturopathy and Yogic Sciences</option>
+            <option value="Bachelor of Pharmacy">Bachelor of Pharmacy</option>
+            <option value="Bachelor of Science - Biomedical Science">Bachelor of Science - Biomedical Science</option>
+            <option value="Bachelor of Science - Biotechnology">Bachelor of Science - Biotechnology</option>
+            <option value="Bachelor of Science - Microbiology">Bachelor of Science - Microbiology</option>
+            <option value="Bachelor of Science in Agriculture">Bachelor of Science in Agriculture</option>
+            <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+            <option value="Bachelor of Science-(PCM)">Bachelor of Science-(PCM)</option>
+            <option value="Bachelor of Technology Civil Engineering">Bachelor of Technology Civil Engineering</option>
+            <option value="Bachelor of Technology in Basic and Applied Sciences">Bachelor of Technology in Basic and Applied Sciences</option>
+            <option value="Bachelor of Technology in Computer Science and Engineering">Bachelor of Technology in Computer Science and Engineering</option>
+            <option value="Bachelor of Technology in Mechanical Engineering">Bachelor of Technology in Mechanical Engineering</option>
+            <option value="Diploma in Civil Engineering">Diploma in Civil Engineering</option>
+            <option value="Diploma in Computer Science and Engineering">Diploma in Computer Science and Engineering</option>
+            <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
+            <option value="Diploma in Electronics and Communication Engineering">Diploma in Electronics and Communication Engineering</option>
+            <option value="Diploma in Elementary Education">Diploma in Elementary Education</option>
+            <option value="Diploma in Engineering in Basic and Applied Sciences">Diploma in Engineering in Basic and Applied Sciences</option>
+            <option value="Diploma in Mechanical Engineering">Diploma in Mechanical Engineering</option>
+            <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
+            <option value="Doctor of Philosophy in Electrical">Doctor of Philosophy in Electrical</option>
+            <option value="Doctor of Philosophy in Electronics">Doctor of Philosophy in Electronics</option>
+            <option value="Doctor of Philosophy in Law">Doctor of Philosophy in Law</option>
+            <option value="Doctor of Philosophy in Management">Doctor of Philosophy in Management</option>
+            <option value="Doctor of Philosophy in Pharmacy">Doctor of Philosophy in Pharmacy</option>
+            <option value="M.Sc. in Electronics">M.Sc. in Electronics</option>
+            <option value="M.Tech. in Communication Engineering">M.Tech. in Communication Engineering</option>
+            <option value="Master of Arts (Education)">Master of Arts (Education)</option>
+            <option value="Master of Arts (English)">Master of Arts (English)</option>
+            <option value="Master of Arts (Hindi)">Master of Arts (Hindi)</option>
+            <option value="Master of Arts (Political Science)">Master of Arts (Political Science)</option>
+            <option value="Master of Arts in Applied Yoga & Health">Master of Arts in Applied Yoga & Health</option>
+            <option value="Master of Business Administration">Master of Business Administration</option>
+            <option value="Master of Commerce">Master of Commerce</option>
+            <option value="Master of Computer Applications">Master of Computer Applications</option>
+            <option value="Master of Laws">Master of Laws</option>
+            <option value="Master of Pharmacy in Pharmaceutical Chemistry">Master of Pharmacy in Pharmaceutical Chemistry</option>
+            <option value="Master of Pharmacy in Pharmaceutics">Master of Pharmacy in Pharmaceutics</option>
+            <option value="Master of Pharmacy in Pharmacology">Master of Pharmacy in Pharmacology</option>
+            <option value="Master of Philosophy">Master of Philosophy</option>
+            <option value="Master of Science - Biomedical Science">Master of Science - Biomedical Science</option>
+            <option value="Master of Science - Biotechnology">Master of Science - Biotechnology</option>
+            <option value="Master of Science - Chemistry">Master of Science - Chemistry</option>
+            <option value="Master of Science - Mathematics">Master of Science - Mathematics</option>
+            <option value="Master of Science - Microbiology">Master of Science - Microbiology</option>
+            <option value="Master of Science - Physics">Master of Science - Physics</option>
+            <option value="Master of Science in Agronomy">Master of Science in Agronomy</option>
+            <option value="Master of Science in Horticulture">Master of Science in Horticulture</option>
+            <option value="Master of Technology - CAD/CAM">Master of Technology - CAD/CAM</option>
+            
+        </select>
+
+        <label for="semester">Semester</label>
+        <select id="semester" name="semester">
+            <option value="">Select Semester</option>
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+            <option value="4">4th</option>
+            <option value="5">5th</option>
+            <option value="6">6th</option>
+            <option value="7">7th</option>
+            <option value="8">8th</option>
+            <option value="9">9th</option>
+            <option value="10">10th</option>
+            
+        </select>
+
+        <label for="course">Course</label>
+        <select id="course" name="course">
+            <option value="">Select Course</option>
+            <option value="CS101">Data Structures</option>
+            <option value="CS102">Algorithms</option>
+            <option value="CS103">Operating System</option>
+            <option value="CS104">Database Management System</option>
+            <option value="CS105">Computer Networks</option>
+            <option value="CS106">Software Engineering</option>
+            <option value="CS107">Artificial Intelligence</option>
+            <option value="CS108">Machine Learning</option>
+            <option value="CS109">Cyber Security</option>
+            <option value="CS110">Cloud Computing</option>
+            <option value="CS111">Big Data Analytics</option>
+            <option value="CS112">Computer Graphics</option>
+            <option value="CS113">Internet of Things</option>
+            <option value="CS114">Blockchain Technology</option>
+            <option value="CS115">Compiler Design</option>
+            <option value="CS116">Theory of Computation</option>
+    
+            
+        </select>
+
+        <div class="students-container" id="students-list">
+            
+        </div>
+
+        <button type="submit">Submit Attendance</button>
+   </fieldset>
+ </div>
+ </form>
+
+
+
+<style>
+  
+  .container {
+         width: 100%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+.attendance-container{
+    width: 70%;
+    margin: auto;
+}
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .students-container {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .student {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: #fff;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .attendance-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const programmeSelect = document.getElementById("programme");
+    const semesterSelect = document.getElementById("semester");
+    const courseSelect = document.getElementById("course");
+    const studentsList = document.getElementById("students-list");
+
+    function fetchStudents() {
+        const programme = programmeSelect.value.trim();
+        const semester = semesterSelect.value.trim();
+        const course = courseSelect.value.trim();
+
+        // Make request only if all three values are selected
+        if (!programme || !semester || !course) {
+        
+            return;
+        }
+
+        fetch(`/api/admin/getStudents?programme=${programme}&semester=${semester}&course=${course}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                studentsList.innerHTML = "";
+                if (data.length === 0) {
+                    studentsList.innerHTML = "<p>No students found.</p>";
+                    return;
+                }
+                data.forEach((student, index) => {
+                    studentsList.innerHTML = `
+                       
+                        <div class="student">
+                            <span>${student.firstName}</span>
+                            <span>${student.rollNumber}</span>
+                            <label><input type="radio" name=${student.id} value="Present" required > ✅Present</label>
+                            <label><input type="radio" name=${student.id} value="Absent"> ❌Absent</label>
+                        </div>
+                        <div class="student">
+                            <span>${student.firstName}</span>
+                            <span>${student.rollNumber}</span>
+                            <label><input type="radio" name=${student.id+1} value="Present" required > ✅Present</label>
+                            <label><input type="radio" name=${student.id+1  } value="Absent"> ❌Absent</label>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error("Error fetching students:", error));
+    }
+
+    // 🔥 Attach a single event listener to all dropdowns
+    [programmeSelect, semesterSelect, courseSelect].forEach(select => {
+        select.addEventListener("change", fetchStudents);
+    });
+});
+
+</script>
